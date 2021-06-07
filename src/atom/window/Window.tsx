@@ -1,54 +1,54 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import Draggable from 'react-draggable';
+import Draggable, { DraggableData } from 'react-draggable';
 import { observer } from 'mobx-react';
 
 import { SquareShadow } from 'atom/shadow';
+import { WindowImpl } from 'state/impl';
+import { IWindowRenderState, WindowRenderPhase } from 'state/window';
 import { useStores } from 'state';
-import { IWindow, IWindowRenderState, WindowRenderPhase } from 'state/window';
 import { WindowHeader } from './WindowHeader';
 import { WindowFadeIn, WindowFadeOut } from './style';
 
 interface WindowProps {
-  minWidth?: number;
-  minHeight?: number;
-  window: IWindow;
+  window: WindowImpl;
 };
 export const Window = observer(({
-  minWidth = 640,
-  minHeight = 480,
   window,
   ...props
 }: WindowProps) => {
   const { windowStore } = useStores();
-  const [size, setSize] = useState<ISize>({ width: minWidth, height: minHeight });
-  const [previousSize, setPreviousSize] = useState<ISize>({ width: minWidth, height: minHeight });
 
+  const onDragStop = (e: any, data: DraggableData) => {
+    window.savePosition(data.x, data.y);
+  };
   const onMaximize = () => {
-    setSize({
-      width: document.body.offsetWidth,
-      height: document.body.offsetHeight,
-    });
+    if (window.maximized) {
+      window.unmaximize();
+    } else {
+      window.maximize();
+    }
   };
   const onClose = () => {
     windowStore.removeWindow(window.id);
   };
 
   return (
-    <Draggable>
-      <DragContainer>
+    <Draggable
+      position={window.position}
+      onStop={onDragStop}
+    >
+      <DragContainer
+        ref={(ref: any) => window.saveRef(ref)}
+      >
         <Container
-          size={size}
-          minWidth={minWidth}
-          minHeight={minHeight}
+          size={window.size}
           renderState={window.renderState}
           {...props}
         >
-          <SquareShadow
-            width={minWidth}
-            height={minHeight}
-          />
+          <SquareShadow />
           <WindowHeader
+            window={window}
             onMaximize={onMaximize}
             onClose={onClose}
           />
@@ -62,6 +62,8 @@ export const Window = observer(({
 const DragContainer = styled.div`
   position: absolute;
   display: inline-block;
+
+  pointer-events: all;
 `;
 const Container = styled.div<Partial<WindowProps> & {
   size: ISize,
@@ -77,10 +79,6 @@ const Container = styled.div<Partial<WindowProps> & {
   ${({ size }) => `
     width: ${size.width}px;
     height: ${size.height}px;
-  `}
-  ${({ minWidth, minHeight }) => `
-    min-width: ${minWidth}px;
-    min-height: ${minHeight}px;
   `}
 
   ${({ renderState: { renderPhase } }) => ({

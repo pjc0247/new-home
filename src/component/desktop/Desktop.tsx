@@ -40,15 +40,29 @@ export const Desktop = observer(({
         onClick={() => windowStore.addWindow(require('asset/icon/gallery.png').default, (<Gallery />))}
       />
 
-      {windowStore.windows.map(window => (
-        <Window
-          key={window.id}
-          window={window}
-        />
-      ))}
+      <WindowContainer>
+        {windowStore.windows.map(window => (
+          <Window
+            key={window.id}
+            window={window}
+          />
+        ))}
+      </WindowContainer>
     </Container>
   )
 });
 
 const Container = styled.div`
+  position: relative;
+  height: 100vh;
+`;
+
+const WindowContainer = styled.div`
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
 `;

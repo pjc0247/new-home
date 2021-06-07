@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@types/luxon": "^1.26.5",
     "@types/styled-components": "^5.1.9",
     "react-app-rewired": "^2.1.8"
   }

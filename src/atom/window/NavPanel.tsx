@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { HamburgerSlider } from 'react-animated-burgers';
 
-import { Align } from 'utils';
+import { Align, Easing } from 'utils';
+import { withRipples } from 'utils/hoc';
+import { Space } from 'atom/layout';
 
 interface NavPanelProps {
   icon: string;
@@ -24,10 +26,11 @@ export const NavPanel = ({
             src={icon}
           />
         </IconContainer>
-        <Slot>
+        <Slot
+          onClick={() => setExpanded(!expanded)}
+        >
           <HamburgerSlider
             isActive={expanded}
-            toggleButton={() => setExpanded(!expanded)}
             buttonStyle={{ padding: '0px' }}
             buttonWidth={18}
             barColor="white"
@@ -37,6 +40,12 @@ export const NavPanel = ({
           <SlotIcon
             src={require('asset/icon/star.png').default}
           />
+          <Space width={16} />
+          <SlotText
+            expanded={expanded}
+          >
+            Favo
+          </SlotText>
         </Slot>
       </Container>
       <Placeholder
@@ -47,7 +56,7 @@ export const NavPanel = ({
 };
 
 const Placeholder = styled.div<any>`
-  transition: all 0.5s ease;
+  transition: all 0.5s ${Easing.ExpoOut};
 
   ${({ expanded }: any) => expanded ? `
     width: 350px;
@@ -64,7 +73,8 @@ const Container = styled.div<Partial<NavPanelProps> & any>`
 
   background-color: rgba(30, 40, 50, 0.8);
 
-  transition: all 0.5s ease;
+  overflow: hidden;
+  transition: all 0.5s ${Easing.ExpoOut};
 
   ${({ expanded }: any) => expanded ? `
     width: 350px;
@@ -85,21 +95,35 @@ const AppIcon = styled.img`
   width: 30px;
   height: 30px;
 `;
-const Slot = styled.div`
+const Slot = withRipples(styled.div`
   display: flex;
   flex-direction: row;
 
   width: 100%;
   height: 55px;
 
+  align-items: center;
+
   padding-left: 35px;
 
-  align-items: center;
-`;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+`);
 const SlotIcon = styled.img`
   width: 18px;
   height: 18px;
 `;
-const SlotText = styled.div`
+const SlotText = styled.div<any>`
   color: white;
+
+  transition: all 0.2s ease;
+
+  ${({ expanded }) => expanded ? `
+    opactiy: 1;
+  ` : `
+    opacity: 0;
+  `}
 `;

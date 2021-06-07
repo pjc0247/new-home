@@ -8,6 +8,9 @@ export interface IWindow {
   icon: string;
   Component: React.ReactNode;
 
+  maximized: boolean;
+  minimized: boolean;
+
   renderState: IWindowRenderState;
 };
 

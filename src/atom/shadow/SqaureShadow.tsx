@@ -2,17 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface SquareShadowProps {
-  width: number;
-  height: number;
 };
 export const SquareShadow = ({
-  width,
-  height,
 }: SquareShadowProps) => {
   return (
     <Container
-      width={width}
-      height={height}
     />
   );
 };

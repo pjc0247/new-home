@@ -15,12 +15,8 @@ export const WindowTitlebar = ({
     <Container
       align="center"
     >
-      <AppIcon
-        src={icon}
-      />
-      <Space width={16} />
       <TitleText>
-        {title}
+        {title.toUpperCase()}
       </TitleText>
     </Container>
   );
@@ -30,7 +26,7 @@ const Container = styled(HorizontalLayout)`
   width: 100%;
   height: 55px;
 
-  padding-left: 32.5px;
+  margin-bottom: 16px;
 `;
 const AppIcon = styled.img`
   width: 22.5px;
@@ -39,5 +35,6 @@ const AppIcon = styled.img`
 const TitleText = styled.div`
   color: white;
 
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: bold;
 `;

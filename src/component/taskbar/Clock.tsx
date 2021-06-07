@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { DateTime } from 'luxon';
 
 import { VerticalLayout } from 'atom/layout';
 
@@ -20,12 +21,12 @@ export const Clock = ({
         <ClockText
           hovered={hovered}
         >
-          8:10 PM
+          {DateTime.local().toFormat('hh:mm a')}
         </ClockText>
         <DateText
           hovered={hovered}
         >
-          1, 1, 2021
+          {DateTime.local().toFormat('MM, dd, yyyy')}
         </DateText>
       </VerticalLayout>
     </Container>

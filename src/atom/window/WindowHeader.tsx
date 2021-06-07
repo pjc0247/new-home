@@ -2,13 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { HorizontalLayout, Push } from 'atom/layout';
+import { WindowImpl } from 'state/impl';
 import { Align } from 'utils';
 
 interface WindowHeaderProps {
+  window: WindowImpl;
   onMaximize: () => void;
   onClose: () => void;
 };
 export const WindowHeader = ({
+  window,
   onMaximize,
   onClose,
 }: WindowHeaderProps) => {
@@ -20,7 +23,9 @@ export const WindowHeader = ({
         onClick={() => {}}
       />
       <NavButton
-        src={require('asset/icon/fullscreen.png').default}
+        src={window.maximized
+          ? require('asset/icon/fullscreen_exit.png').default
+          : require('asset/icon/fullscreen.png').default}
         onClick={onMaximize}
       />
       <NavButton
