@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { DateTime } from 'luxon';
 
 import { VerticalLayout } from 'atom/layout';
+import { useHeartbeat } from 'utils';
 
 interface ClockProps {
 
@@ -11,6 +12,11 @@ export const Clock = ({
 
 }: ClockProps) => {
   const [hovered, setHovered] = useState(false);
+  const [time, setTime] = useState(0);
+
+  useHeartbeat(() => {
+    setTime(time => time + 1);
+  }, 1000, []);
 
   return (
     <Container>
@@ -30,7 +36,7 @@ export const Clock = ({
         </DateText>
       </VerticalLayout>
     </Container>
-  )
+  );
 };
 
 const Container = styled.div`
