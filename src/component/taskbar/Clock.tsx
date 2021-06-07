@@ -41,30 +41,30 @@ export const Clock = ({
 
 const Container = styled.div`
   display: flex;
-  width: 110px;
+  width: 75px;
 
   justify-content: center;
 `;
 const ClockText = styled.span<any>`
   color: white;
 
-  font-size: 20px;
+  font-size: 13.5px;
 
   transition: all 0.32s ease;
 
   ${({ hovered }) => hovered ? `
-    transform: scale(0.6) translateY(-18px);
+    transform: scale(0.6) translateY(-13px);
   ` : `
     transform: scale(1);
   `}
 `;
 const DateText = styled.span<any>`
   position: absolute;
-  bottom: 6px;
+  bottom: 3px;
 
   color: white;
 
-  font-size: 17px;
+  font-size: 11.5px;
 
   transform-origin: bottom;
   transition: all 0.32s ease;

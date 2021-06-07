@@ -24,7 +24,7 @@ export const WindowTitlebar = ({
 
 const Container = styled(HorizontalLayout)`
   width: 100%;
-  height: 55px;
+  height: 37px;
 
   padding-left: 16px;
 `;
@@ -35,6 +35,6 @@ const AppIcon = styled.img`
 const TitleText = styled.div`
   color: white;
 
-  font-size: 22px;
+  font-size: 12px;
   font-weight: bold;
 `;

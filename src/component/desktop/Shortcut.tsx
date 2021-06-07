@@ -25,8 +25,8 @@ export const Shortcut = ({
       >
         <ImageContainer>
           <RadialShadow
-            width={60}
-            height={60}
+            width={36}
+            height={36}
           />
           <Image
             src={src}
@@ -46,10 +46,10 @@ const Container = styled.div`
 
   flex-direction: column;
 
-  width: 125px;
-  height: 125px;
+  width: 90px;
+  height: 90px;
 
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
 
   &:hover {
@@ -60,11 +60,11 @@ const ImageContainer = styled.div`
   position: relative;
 `;
 const Image = styled.img`
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 7px;
   filter: drop-shadow(2px 4px 6px black);
 
   z-index: 1;
@@ -74,5 +74,7 @@ const Image = styled.img`
 const NameText = styled.div`
   color: white;
 
-  font-size: 16px;
+  font-size: 11px;
+
+  user-select: none;
 `;

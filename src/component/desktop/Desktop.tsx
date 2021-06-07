@@ -26,26 +26,28 @@ export const Desktop = observer(({
       <Wallpaper />
       <TaskBar />
 
-      <Shortcut
-        src={require('asset/app/blade/icon.png').default}
-        name="Blade"
-        onClick={() => App.launch(BladeApp)}
-      />
-      <Shortcut
-        src={require('asset/icon/browser.png').default}
-        name="WebBrowser"
-        onClick={() => windowStore.addWindow(require('asset/icon/browser.png').default, (<Browser />))}
-      />
-      <Shortcut
-        src={require('asset/icon/gallery.png').default}
-        name="Gallery"
-        onClick={() => App.launch(GalleryApp)}
-      />
-      <Shortcut
-        src={require('asset/app/github/icon.png').default}
-        name="Github"
-        onClick={() => App.launch(GithubApp)}
-      />
+      <ShortcutContainer>
+        <Shortcut
+          src={require('asset/app/blade/icon.png').default}
+          name="Blade"
+          onClick={() => App.launch(BladeApp)}
+        />
+        <Shortcut
+          src={require('asset/icon/browser.png').default}
+          name="WebBrowser"
+          onClick={() => windowStore.addWindow(require('asset/icon/browser.png').default, (<Browser />))}
+        />
+        <Shortcut
+          src={require('asset/icon/gallery.png').default}
+          name="Gallery"
+          onClick={() => App.launch(GalleryApp)}
+        />
+        <Shortcut
+          src={require('asset/app/github/icon.png').default}
+          name="Github"
+          onClick={() => App.launch(GithubApp)}
+        />
+      </ShortcutContainer>
 
       <WindowContainer>
         {windowStore.windows.map(window => (
@@ -64,6 +66,27 @@ const Container = styled.div`
   height: 100vh;
 `;
 
+const ShortcutContainer = styled.div`
+  position: absolute;
+  left: 0px;
+  top: 0px;
+
+  display: flex;
+  width: 100%;
+
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  gap: 12px;
+
+  pointer-events: none;
+
+  padding: 20px 20px;
+
+  > div {
+    pointer-events: all;
+  }
+`;
 const WindowContainer = styled.div`
   position: absolute;
   left: 0px;

@@ -31,7 +31,7 @@ const Container = styled.div<Partial<TaskBarIconProps>>`
 
   position: relative;
 
-  width: 55px;
+  width: 37px;
   height: 100%;
 
   &:hover {
@@ -39,8 +39,8 @@ const Container = styled.div<Partial<TaskBarIconProps>>`
   }
 `;
 const Icon = styled.img<Partial<TaskBarIconProps>>`
-  width: 25px;
-  height: 25px;
+  width: 17px;
+  height: 17px;
 
   border-radius: 5px;
 `;
@@ -57,9 +57,9 @@ const ActiveBar = styled.div<Partial<TaskBarIconProps>>`
 
   ${({ active }) => active ? `
     width: 100%;
-    height: 3px;
+    height: 2.5px;
   ` : `
     width: 0%;
-    height: 3px;
+    height: 2.5px;
   `}
 `;

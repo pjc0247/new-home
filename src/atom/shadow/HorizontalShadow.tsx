@@ -7,7 +7,7 @@ interface HorizontalShadowProps {
   offsetY?: number;
 };
 export const HorizontalShadow = ({
-  offsetY = -15,
+  offsetY = -10,
 }: HorizontalShadowProps) => {
   return (
     <Container
@@ -23,5 +23,5 @@ const Container = styled(ShadowImage)<Partial<HorizontalShadowProps>>`
   top: ${({ offsetY }) => offsetY}px;
 
   width: 100%;
-  height: 15px;
+  height: 10px;
 `;

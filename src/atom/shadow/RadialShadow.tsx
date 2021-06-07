@@ -21,13 +21,13 @@ export const RadialShadow = ({
 
 const Container = styled(ShadowImage)<Partial<RadialShadowProps>>`
   position: absolute;
-  left: -35px;
-  top: -35px;
+  left: -15px;
+  top: -15px;
 
   opacity: 0.45;
 
   ${({ width, height }) => `
-    width: ${width! + 70}px;
-    height: ${height! + 70}px;
+    width: ${width! + 30}px;
+    height: ${height! + 30}px;
   `}
 `;

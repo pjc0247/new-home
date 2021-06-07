@@ -43,8 +43,8 @@ export class WindowImpl implements IWindow {
 
   private getInitialPosition(): IPosition {
     return {
-      x: 200 + globalWindowId % 5 * 50,
-      y: 50 + globalWindowId % 5 * 50,
+      x: 50 + globalWindowId % 5 * 25,
+      y: 50 + globalWindowId % 5 * 25,
     };
   }
 

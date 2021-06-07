@@ -32,7 +32,7 @@ export const NavPanel = ({
           <HamburgerSlider
             isActive={expanded}
             buttonStyle={{ padding: '0px' }}
-            buttonWidth={18}
+            buttonWidth={12}
             barColor="white"
           />
         </Slot>
@@ -40,7 +40,7 @@ export const NavPanel = ({
           <SlotIcon
             src={require('asset/icon/star.png').default}
           />
-          <Space width={16} />
+          <Space width={11} />
           <SlotText
             expanded={expanded}
           >
@@ -59,9 +59,9 @@ const Placeholder = styled.div<any>`
   transition: all 0.5s ${Easing.ExpoOut};
 
   ${({ expanded }: any) => expanded ? `
-    width: 350px;
+    width: 235px;
   ` : `
-    width: 90px;
+    width: 60px;
   `}
 `;
 const Container = styled.div<Partial<NavPanelProps> & any>`
@@ -77,9 +77,9 @@ const Container = styled.div<Partial<NavPanelProps> & any>`
   transition: all 0.5s ${Easing.ExpoOut};
 
   ${({ expanded }: any) => expanded ? `
-    width: 350px;
+    width: 235px;
   ` : `
-    width: 90px;
+    width: 60px;
   `}
 `;
 const IconContainer = styled.div`
@@ -87,24 +87,24 @@ const IconContainer = styled.div`
   justify-content: flex-start;
 
   width: 100%;
-  height: 80px;
+  height: 54px;
 
-  padding-left: 30px;
+  padding-left: 20px;
 `;
 const AppIcon = styled.img`
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 `;
 const Slot = withRipples(styled.div`
   display: flex;
   flex-direction: row;
 
   width: 100%;
-  height: 55px;
+  height: 37px;
 
   align-items: center;
 
-  padding-left: 35px;
+  padding-left: 23.5px;
 
   transition: all 0.5s ease;
 
@@ -113,8 +113,8 @@ const Slot = withRipples(styled.div`
   }
 `);
 const SlotIcon = styled.img`
-  width: 18px;
-  height: 18px;
+  width: 12px;
+  height: 12px;
 `;
 const SlotText = styled.div<any>`
   color: white;

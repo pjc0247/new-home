@@ -31,10 +31,10 @@ export const GalleryThumbnail = ({
 const Container = styled.div`
   position: relative;
 
-  width: 256px;
-  height: 256px;
+  width: 170px;
+  height: 170px;
 
-  border-radius: 10px;
+  border-radius: 7px;
   overflow: hidden;
 
   &:hover {

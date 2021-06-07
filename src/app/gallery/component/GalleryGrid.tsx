@@ -15,8 +15,8 @@ export const GalleryGrid = ({
   return (
     <Container2>
       <GridComponent
-        itemMarginRight={15}
-        itemMarginBottom={230}
+        itemMarginRight={10}
+        itemMarginBottom={140}
         style={{ width: '100%', height: '600px' }}
       >
         {[1,2,3,4,5,6].map((x) => (
@@ -49,7 +49,7 @@ export const GalleryGrid = ({
 };
 
 const Container2 = styled.div`
-  padding: 0px 20px 20px 20px;
+  padding: 12px 12px 12px 12px;
 `;
 
 const Container = styled.div`

@@ -5,7 +5,7 @@ import { Github } from './Github';
 
 export const GithubApp = {
   icon: require('asset/app/github/icon.png').default,
-  width: 800,
-  height: 1000,
+  width: 560,
+  height: 700,
   Component: <Github />
 } as IApp;

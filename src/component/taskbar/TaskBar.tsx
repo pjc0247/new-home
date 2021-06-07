@@ -47,7 +47,7 @@ const Container = styled.div`
 
   display: flex;
   width: 100%;
-  height: 42.5px;
+  height: 28px;
 
   background-color: rgba(25, 35, 45, 0.75);
 `;

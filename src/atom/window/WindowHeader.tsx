@@ -65,8 +65,8 @@ const Container = styled(HorizontalLayout)`
 const Button = styled.div`
   ${Align.Center}
 
-  width: 45px;
-  height: 40px;
+  width: 30px;
+  height: 27px;
 
   transition: all 0.3s ease;
 
@@ -75,6 +75,6 @@ const Button = styled.div`
   }
 `;
 const ButtonIcon = styled.img`
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
 `;
