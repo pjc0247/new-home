@@ -26,7 +26,7 @@ const Container = styled(HorizontalLayout)`
   width: 100%;
   height: 55px;
 
-  margin-bottom: 16px;
+  padding-left: 16px;
 `;
 const AppIcon = styled.img`
   width: 22.5px;

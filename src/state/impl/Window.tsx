@@ -6,6 +6,8 @@ import { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';
 let globalWindowId = 0;
 
 export class WindowImpl implements IWindow {
+  static readonly DefaultSize: ISize = { width: 640, height: 480 };
+
   id: string;
   icon: string;
   Component: React.ReactNode;
@@ -22,7 +24,7 @@ export class WindowImpl implements IWindow {
   private prevSize: ISize;
   private timers: number[] = [];
 
-  constructor(icon: string, Component: React.ReactNode) {
+  constructor(icon: string, Component: React.ReactNode, size?: ISize) {
     makeAutoObservable(this);
     
     this.id = `w${globalWindowId++}`;
@@ -30,7 +32,7 @@ export class WindowImpl implements IWindow {
     this.Component = Component;
     this.position = this.getInitialPosition();
     this.prevPosition = this.position;
-    this.size = { width: 640, height: 480 };
+    this.size = size || WindowImpl.DefaultSize;
     this.prevSize = this.size;
     this.maximized = false;
     this.minimized = false;

@@ -32,7 +32,7 @@ export interface IWindowStore {
 
   // mutators
   dispenseZIndex(): number;
-  addWindow(icon: string, Component: React.ReactNode): string;
+  addWindow(icon: string, Component: React.ReactNode, size?: ISize): string;
   removeWindow(id: string): void;
 };
 const windowStore = observable<IWindowStore>({
@@ -47,10 +47,11 @@ const windowStore = observable<IWindowStore>({
   dispenseZIndex() {
     return this.zIndex++;
   },
-  addWindow(icon: string, Component: React.ReactNode) {
+  addWindow(icon: string, Component: React.ReactNode, size?: ISize) {
     const newWindow = new WindowImpl(
       icon,
       Component,
+      size,
     );
     this.windows = [...this.windows, newWindow];
 

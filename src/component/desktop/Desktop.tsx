@@ -10,6 +10,8 @@ import { Wallpaper } from './Wallpaper';
 import { Shortcut } from './Shortcut';
 import { Blade } from 'app/blade';
 import { Gallery } from 'app/gallery';
+import { Github, GithubApp } from 'app/github';
+import { App } from 'state/impl';
 
 interface DesktopProps {
 
@@ -38,6 +40,11 @@ export const Desktop = observer(({
         src={require('asset/icon/gallery.png').default}
         name="Gallery"
         onClick={() => windowStore.addWindow(require('asset/icon/gallery.png').default, (<Gallery />))}
+      />
+      <Shortcut
+        src={require('asset/app/github/icon.png').default}
+        name="Github"
+        onClick={() => App.launch(GithubApp)}
       />
 
       <WindowContainer>
