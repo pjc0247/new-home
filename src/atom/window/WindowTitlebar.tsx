@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { HorizontalLayout, Push } from 'atom/layout';
+import { HorizontalLayout, Push, Space } from 'atom/layout';
 
 interface WindowTitlebarProps {
   icon: string;
+  title: string;
 };
 export const WindowTitlebar = ({
   icon,
+  title,
 }: WindowTitlebarProps) => {
   return (
     <Container
@@ -16,6 +18,10 @@ export const WindowTitlebar = ({
       <AppIcon
         src={icon}
       />
+      <Space width={16} />
+      <TitleText>
+        {title}
+      </TitleText>
     </Container>
   );
 };
@@ -29,4 +35,9 @@ const Container = styled(HorizontalLayout)`
 const AppIcon = styled.img`
   width: 22.5px;
   height: 22.5px;
+`;
+const TitleText = styled.div`
+  color: white;
+
+  font-size: 18px;
 `;

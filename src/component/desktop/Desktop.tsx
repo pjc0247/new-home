@@ -9,6 +9,7 @@ import { useStores } from 'state';
 import { Wallpaper } from './Wallpaper';
 import { Shortcut } from './Shortcut';
 import { Blade } from 'app/blade';
+import { Gallery } from 'app/gallery';
 
 interface DesktopProps {
 
@@ -32,6 +33,11 @@ export const Desktop = observer(({
         src={require('asset/icon/browser.png').default}
         name="WebBrowser"
         onClick={() => windowStore.addWindow(require('asset/icon/browser.png').default, (<Browser />))}
+      />
+      <Shortcut
+        src={require('asset/icon/gallery.png').default}
+        name="Gallery"
+        onClick={() => windowStore.addWindow(require('asset/icon/gallery.png').default, (<Gallery />))}
       />
 
       {windowStore.windows.map(window => (

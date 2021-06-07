@@ -16,6 +16,7 @@ export const Blade = ({
       <Content>
         <WindowTitlebar
           icon={require('asset/icon/home.png').default}
+          title="Blade"
         />
         <IFrame
           src="https://blade-e9841.web.app/"

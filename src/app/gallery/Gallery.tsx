@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import { Window, NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
 
-const AppIcon = require('asset/icon/browser.png').default;
+const AppIcon = require('asset/icon/gallery.png').default;
 
-interface BrowserProps {
+interface GalleryProps {
 };
-export const Browser = ({
+export const Gallery = ({
   ...props
-}: BrowserProps) => {
+}: GalleryProps) => {
   return (
     <>
       <NavPanel
@@ -19,11 +19,8 @@ export const Browser = ({
 
       <Content>
         <WindowTitlebar
-          icon={require('asset/icon/home.png').default}
-          title="Web Browser"
-        />
-        <IFrame
-          src="https://www.google.com"
+          icon={require('asset/icon/gallery.png').default}
+          title="Gallery"
         />
       </Content>
     </>
@@ -31,10 +28,5 @@ export const Browser = ({
 };
 
 const Content = styled(VerticalLayout)`
-  flex: 1;
-`;
-const IFrame = styled.iframe.attrs({
-  frameBorder: 'none',
-})`
   flex: 1;
 `;
