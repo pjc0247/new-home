@@ -12,5 +12,7 @@ const GithubApp = {
 } as IApp;
 ```
 ```tsx
-App.launch(GithubApp);
+const onClickGithub = () => {
+  App.launch(GithubApp);
+};
 ```
