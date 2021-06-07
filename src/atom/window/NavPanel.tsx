@@ -6,11 +6,18 @@ import { Align, Easing } from 'utils';
 import { withRipples } from 'utils/hoc';
 import { Space } from 'atom/layout';
 
+interface NavPanelItem {
+  icon: string;
+  label: string;
+  onClick: () => void;
+};
 interface NavPanelProps {
   icon: string;
+  items?: NavPanelItem[];
 };
 export const NavPanel = ({
   icon,
+  items = [],
   ...props
 }: NavPanelProps) => {
   const [expanded, setExpanded] = useState(false);
@@ -36,17 +43,22 @@ export const NavPanel = ({
             barColor="white"
           />
         </Slot>
-        <Slot>
-          <SlotIcon
-            src={require('asset/icon/star.png').default}
-          />
-          <Space width={11} />
-          <SlotText
-            expanded={expanded}
+        {items.map(x => (
+          <Slot
+            key={x.label}
+            onClick={x.onClick}
           >
-            Favo
-          </SlotText>
-        </Slot>
+            <SlotIcon
+              src={x.icon}
+            />
+            <Space width={11} />
+            <SlotText
+              expanded={expanded}
+            >
+              {x.label}
+            </SlotText>
+          </Slot>
+        ))}
       </Container>
       <Placeholder
         expanded={expanded}

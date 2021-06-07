@@ -12,6 +12,7 @@ import { Blade, BladeApp } from 'app/blade';
 import { Gallery, GalleryApp } from 'app/gallery';
 import { Github, GithubApp } from 'app/github';
 import { App } from 'state/impl';
+import { RookieApp } from 'app/rookie';
 
 interface DesktopProps {
 
@@ -46,6 +47,11 @@ export const Desktop = observer(({
           src={require('asset/app/github/icon.png').default}
           name="Github"
           onClick={() => App.launch(GithubApp)}
+        />
+        <Shortcut
+          src={require('asset/app/rookie/icon.png').default}
+          name="Rookie"
+          onClick={() => App.launch(RookieApp)}
         />
       </ShortcutContainer>
 

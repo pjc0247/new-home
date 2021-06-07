@@ -5,7 +5,7 @@ import { Blade } from './Blade';
 
 export const BladeApp = {
   icon: require('asset/app/blade/icon.png').default,
-  width: 1000,
-  height: 1200,
+  width: 480,
+  height: 750,
   Component: <Blade />
 } as IApp;
