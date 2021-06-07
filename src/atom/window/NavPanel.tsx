@@ -96,6 +96,7 @@ const Container = styled.div<Partial<NavPanelProps> & any>`
 `;
 const IconContainer = styled.div`
   ${Align.Center}
+
   justify-content: flex-start;
 
   width: 100%;
@@ -130,6 +131,8 @@ const SlotIcon = styled.img`
 `;
 const SlotText = styled.div<any>`
   color: white;
+
+  font-size: 12px;
 
   transition: all 0.2s ease;
 
