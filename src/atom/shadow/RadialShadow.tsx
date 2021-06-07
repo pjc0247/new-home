@@ -24,9 +24,7 @@ const Container = styled(ShadowImage)<Partial<RadialShadowProps>>`
   left: -35px;
   top: -35px;
 
-  opacity: 0.65;
-
-  z-index: -1;
+  opacity: 0.45;
 
   ${({ width, height }) => `
     width: ${width! + 70}px;

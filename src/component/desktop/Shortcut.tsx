@@ -1,6 +1,6 @@
 import React from 'react';
-import Draggable from 'react-draggable';
 import styled from 'styled-components';
+import Ripples from 'react-ripples';
 
 import { RadialShadow } from 'atom/shadow';
 import { Align } from 'utils';
@@ -8,15 +8,21 @@ import { Align } from 'utils';
 interface ShortcutProps {
   src: string;
   name: string;
+  onClick?: () => void;
 };
 export const Shortcut = ({
   src,
   name,
+  onClick,
 }: ShortcutProps) => {
 
   return (
-    <Draggable>
-      <Container>
+    <Ripples
+      color="rgba(255, 255, 255, 0.5)"
+    >
+      <Container
+        onClick={onClick}
+      >
         <ImageContainer>
           <RadialShadow
             width={60}
@@ -31,18 +37,24 @@ export const Shortcut = ({
           {name}
         </NameText>
       </Container>
-    </Draggable>
-  )
+    </Ripples>
+  );
 };
 
 const Container = styled.div`
   ${Align.Center}
+
   flex-direction: column;
 
   width: 125px;
   height: 125px;
 
-  border-radius: 5px;
+  border-radius: 15px;
+  overflow: hidden;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 `;
 const ImageContainer = styled.div`
   position: relative;
@@ -53,6 +65,9 @@ const Image = styled.img`
 
   overflow: hidden;
   border-radius: 10px;
+  filter: drop-shadow(2px 4px 6px black);
+
+  z-index: 1;
 
   object-fit: cover;
 `;

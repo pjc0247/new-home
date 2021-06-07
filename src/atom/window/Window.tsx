@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Draggable from 'react-draggable';
 import { observer } from 'mobx-react';
@@ -7,70 +7,85 @@ import { SquareShadow } from 'atom/shadow';
 import { useStores } from 'state';
 import { IWindow, IWindowRenderState, WindowRenderPhase } from 'state/window';
 import { WindowHeader } from './WindowHeader';
+import { WindowFadeIn, WindowFadeOut } from './style';
 
 interface WindowProps {
-  width?: number;
-  height?: number;
+  minWidth?: number;
+  minHeight?: number;
   window: IWindow;
-  children: React.ReactNode;
 };
 export const Window = observer(({
-  width = 640,
-  height = 480,
+  minWidth = 640,
+  minHeight = 480,
   window,
-  children,
   ...props
 }: WindowProps) => {
   const { windowStore } = useStores();
+  const [size, setSize] = useState<ISize>({ width: minWidth, height: minHeight });
+  const [previousSize, setPreviousSize] = useState<ISize>({ width: minWidth, height: minHeight });
 
+  const onMaximize = () => {
+    setSize({
+      width: document.body.offsetWidth,
+      height: document.body.offsetHeight,
+    });
+  };
   const onClose = () => {
     windowStore.removeWindow(window.id);
   };
 
   return (
     <Draggable>
-      <Container
-        width={width}
-        height={height}
-        renderState={window.renderState}
-        {...props}
-      >
-        <SquareShadow
-          width={width}
-          height={height}
-        />
-        <WindowHeader
-          onClose={onClose}
-        />
-        {children}
-      </Container>
+      <DragContainer>
+        <Container
+          size={size}
+          minWidth={minWidth}
+          minHeight={minHeight}
+          renderState={window.renderState}
+          {...props}
+        >
+          <SquareShadow
+            width={minWidth}
+            height={minHeight}
+          />
+          <WindowHeader
+            onMaximize={onMaximize}
+            onClose={onClose}
+          />
+          {window.Component}
+        </Container>
+      </DragContainer>
     </Draggable>
   );
 });
 
+const DragContainer = styled.div`
+  position: absolute;
+  display: inline-block;
+`;
 const Container = styled.div<Partial<WindowProps> & {
+  size: ISize,
   renderState: IWindowRenderState,
 }>`
   position: relative;
-  left: 100px;
-  top: 100px;
 
   display: flex;
-  width: max-content;
-  height: max-content;
 
   background-color: rgba(20, 30, 40, 0.9);
   backdrop-filter: saturate(80%);
 
-  ${({ width, height }) => `
-    min-width: ${width}px;
-    min-height: ${height}px;
+  ${({ size }) => `
+    width: ${size.width}px;
+    height: ${size.height}px;
   `}
-
-  transition: all 0.5s ease;
+  ${({ minWidth, minHeight }) => `
+    min-width: ${minWidth}px;
+    min-height: ${minHeight}px;
+  `}
 
   ${({ renderState: { renderPhase } }) => ({
     [WindowRenderPhase.FadeIn]: `
+      transition: all 0.5s ease;
       animation: windowFadeIn 0.5s ease;
       animation-fill-mode: forwards;
     `,
@@ -78,29 +93,12 @@ const Container = styled.div<Partial<WindowProps> & {
       opacity: 1;
     `,
     [WindowRenderPhase.FadeOut]: `
+      transition: all 0.5s ease;
       animation: windowFadeOut 0.5s ease;
       animation-fill-mode: forwards;
     `,
   })[renderPhase!]}
 
-  @keyframes windowFadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  @keyframes windowFadeOut {
-    from {
-      opacity: 1;
-      transform: scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-  }
+  ${WindowFadeIn}
+  ${WindowFadeOut}
 `;

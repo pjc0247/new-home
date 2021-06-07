@@ -17,6 +17,7 @@
     "react-animated-burgers": "^1.2.8",
     "react-dom": "^17.0.2",
     "react-draggable": "^4.4.3",
+    "react-ripples": "^2.2.1",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.0",
     "typescript": "^4.1.2",

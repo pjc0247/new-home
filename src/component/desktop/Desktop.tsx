@@ -8,6 +8,7 @@ import { TaskBar } from 'component/taskbar';
 import { useStores } from 'state';
 import { Wallpaper } from './Wallpaper';
 import { Shortcut } from './Shortcut';
+import { Blade } from 'app/blade';
 
 interface DesktopProps {
 
@@ -17,10 +18,6 @@ export const Desktop = observer(({
 }: DesktopProps) => {
   const { windowStore } = useStores();
 
-  useEffect(() => {
-    windowStore.addWindow();
-  }, []);
-
   return (
     <Container>
       <Wallpaper />
@@ -29,15 +26,19 @@ export const Desktop = observer(({
       <Shortcut
         src={require('asset/app/blade/icon.png').default}
         name="Blade"
+        onClick={() => windowStore.addWindow(require('asset/app/blade/icon.png').default, (<Blade />))}
+      />
+      <Shortcut
+        src={require('asset/icon/browser.png').default}
+        name="WebBrowser"
+        onClick={() => windowStore.addWindow(require('asset/icon/browser.png').default, (<Browser />))}
       />
 
       {windowStore.windows.map(window => (
         <Window
           key={window.id}
           window={window}
-        >
-          sdf
-        </Window>
+        />
       ))}
     </Container>
   )

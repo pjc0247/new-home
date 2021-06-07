@@ -5,9 +5,11 @@ import { HorizontalLayout, Push } from 'atom/layout';
 import { Align } from 'utils';
 
 interface WindowHeaderProps {
+  onMaximize: () => void;
   onClose: () => void;
 };
 export const WindowHeader = ({
+  onMaximize,
   onClose,
 }: WindowHeaderProps) => {
   return (
@@ -19,7 +21,7 @@ export const WindowHeader = ({
       />
       <NavButton
         src={require('asset/icon/fullscreen.png').default}
-        onClick={() => {}}
+        onClick={onMaximize}
       />
       <NavButton
         src={require('asset/icon/close.png').default}

@@ -1,16 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react';
 
 import { HorizontalShadow } from 'atom/shadow';
 import { HorizontalLayout, Push } from 'atom/layout';
+import { useStores } from 'state';
 import { Clock } from './Clock';
+import { TaskBarIcon } from './TaskBarIcon';
+import { WindowRenderPhase } from 'state/window';
 
 interface TaskBarProps {
 
 };
-export const TaskBar = ({
+export const TaskBar = observer(({
 
 }: TaskBarProps) => {
+  const { windowStore } = useStores();
 
   return (
     <Container>
@@ -21,11 +26,19 @@ export const TaskBar = ({
         align="center"
       >
         <Push />
+        {windowStore.windows.map(window => (
+          <TaskBarIcon
+            key={window.id}
+            active={window.renderState.renderPhase != WindowRenderPhase.FadeOut}
+            icon={window.icon}
+          />
+        ))}
+        <Push />
         <Clock />
       </HorizontalLayout>
     </Container>
   )
-};
+});
 
 const Container = styled.div`
   position: absolute;

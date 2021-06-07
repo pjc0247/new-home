@@ -1,11 +1,9 @@
+import { DesktopPage } from 'page/DesktopPage';
 import React from 'react';
-
-import { Desktop } from './component/desktop';
 
 const App = () => {
   return (
-    <Desktop
-    />
+    <DesktopPage />
   );
 }
 export default App;
