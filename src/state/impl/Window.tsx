@@ -126,7 +126,7 @@ export class WindowImpl implements IWindow {
     let size = { ...this.size };
 
     const stepAnimation = () => {
-      const lerpSpeed = 0.12;
+      const lerpSpeed = 0.175;
       position = {
         x: position.x + (targetPosition.x - position.x) * lerpSpeed,
         y: position.y + (targetPosition.y - position.y) * lerpSpeed,

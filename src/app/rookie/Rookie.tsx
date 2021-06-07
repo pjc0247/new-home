@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Window, NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
+import { Crossfade } from 'atom/display';
 
 const AppIcon = require('asset/app/rookie/icon.png').default;
 
@@ -41,11 +42,20 @@ export const Rookie = ({
           icon={require('asset/app/rookie/icon.png').default}
           title="Rookie"
         />
-        <IFrame
-          src={contentType === ContentType.Index
-            ? 'https://pjc0247.github.io/try-rookie/'
-            : 'https://github-e.com/#/user/pjc0247/repos/rookie.lang'}
-        />
+        <Crossfade>
+          {contentType === ContentType.Index && (
+            <IFrame
+              loading="lazy"
+              src="https://pjc0247.github.io/try-rookie/"
+            />
+          )}
+          {contentType === ContentType.Github && (
+            <IFrame
+              loading="lazy"
+              src="https://github-e.com/#/user/pjc0247/repos/rookie.lang"
+            />
+          )}
+        </Crossfade>
       </Content>
     </>
   );
