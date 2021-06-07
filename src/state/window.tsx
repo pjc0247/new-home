@@ -34,6 +34,7 @@ export interface IWindowStore {
   dispenseZIndex(): number;
   addWindow(icon: string, Component: React.ReactNode, size?: ISize): string;
   removeWindow(id: string): void;
+  bringToFront(id: string): void;
 };
 const windowStore = observable<IWindowStore>({
   zIndex: 100,
@@ -41,7 +42,8 @@ const windowStore = observable<IWindowStore>({
 
   get activeWindows() {
     return this.windows
-      .filter((x: IWindow) => x.renderState.renderPhase !== WindowRenderPhase.FadeOut);
+      .filter((x: IWindow) => x.renderState.renderPhase !== WindowRenderPhase.FadeOut)
+      .sort((a: WindowImpl, b: WindowImpl) => a.zIndex > b.zIndex ? 1 : -1);
   },
 
   dispenseZIndex() {
@@ -79,6 +81,14 @@ const windowStore = observable<IWindowStore>({
         target.dispose();
       }, 1000);
     }
+  },
+  bringToFront(id: string) {
+    /*
+    this.windows = [
+      ...this.windows.filter(x => x.id !== id),
+      this.windows.find(x => x.id === id)!,
+    ].filter(x => !!x);
+    */
   },
 });
 export default windowStore;

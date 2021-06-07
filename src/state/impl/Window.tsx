@@ -1,9 +1,11 @@
 import React from 'react';
 import { makeAutoObservable } from 'mobx';
 
-import { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';
+import windowStore, { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';
+import { getStores } from 'state';
 
 let globalWindowId = 0;
+let globalWindowZIndex = 100;
 
 export class WindowImpl implements IWindow {
   static readonly DefaultSize: ISize = { width: 640, height: 480 };
@@ -16,6 +18,7 @@ export class WindowImpl implements IWindow {
   size: ISize;
   maximized: boolean;
   minimized: boolean;
+  zIndex: number;
 
   renderState: IWindowRenderState;
   
@@ -23,6 +26,19 @@ export class WindowImpl implements IWindow {
   private prevPosition: IPosition;
   private prevSize: ISize;
   private timers: number[] = [];
+
+  get isActive() {
+    return this.renderState.renderPhase !== WindowRenderPhase.FadeOut;
+  }
+  get isFocused() {
+    const { windowStore } = getStores();
+    return windowStore.activeWindows[windowStore.activeWindows.length - 1] === this;
+  }
+
+  static show(icon: string, Component: React.ReactNode, size?: ISize) {
+    const { windowStore } = getStores();
+    windowStore.addWindow(icon, Component, size);
+  }
 
   constructor(icon: string, Component: React.ReactNode, size?: ISize) {
     makeAutoObservable(this);
@@ -36,9 +52,12 @@ export class WindowImpl implements IWindow {
     this.prevSize = this.size;
     this.maximized = false;
     this.minimized = false;
+    this.zIndex = globalWindowZIndex ++;
     this.renderState = {
       renderPhase: WindowRenderPhase.FadeIn,
     };
+
+    this.focus();
   }
 
   private getInitialPosition(): IPosition {
@@ -50,6 +69,7 @@ export class WindowImpl implements IWindow {
 
   dispose() {
     this.clearAllTimeouts();
+    // todo: next focused window
   }
   clearAllTimeouts() {
     this.timers.forEach(tid => clearTimeout(tid));
@@ -71,6 +91,14 @@ export class WindowImpl implements IWindow {
     this.position = { x, y };
   }
 
+  focus() {
+    const { windowStore } = getStores();
+    windowStore.bringToFront(this.id);
+  }
+  bringToFront() {
+    this.focus();
+    this.zIndex = globalWindowZIndex ++;
+  }
   unmaximize() {
     this.maximized = false;
 

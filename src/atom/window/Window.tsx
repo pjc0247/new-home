@@ -40,6 +40,8 @@ export const Window = observer(({
     >
       <DragContainer
         ref={(ref: any) => window.saveRef(ref)}
+        renderState={window.renderState}
+        zIndex={window.zIndex}
       >
         <Container
           size={window.size}
@@ -59,11 +61,18 @@ export const Window = observer(({
   );
 });
 
-const DragContainer = styled.div`
+const DragContainer = styled.div<any>`
   position: absolute;
   display: inline-block;
 
-  pointer-events: all;
+  ${({ zIndex }) => `
+    z-index: ${zIndex};
+  `}
+  ${({ renderState: { renderPhase } }) => renderPhase === WindowRenderPhase.FadeOut ? `
+    pointer-events: none;
+  ` : `
+    pointer-events: all;
+  `}
 `;
 const Container = styled.div<Partial<WindowProps> & {
   size: ISize,

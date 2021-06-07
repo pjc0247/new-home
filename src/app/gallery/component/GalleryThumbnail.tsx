@@ -1,16 +1,31 @@
-import { Space } from 'atom/layout';
 import React from 'react';
 import styled from 'styled-components';
+
+import { Space } from 'atom/layout';
+import { WindowImpl } from 'state/impl';
 import { Align } from 'utils';
+import { GalleryPreviewWindow } from '../window';
+
+const AppIcon = require('asset/icon/gallery.png').default;
 
 interface GalleryThumbnailProps {
   src: string;
 };
 export const GalleryThumbnail = ({
+  src,
 }: GalleryThumbnailProps) => {
 
+  const onClick = () => {
+    WindowImpl.show(
+      AppIcon,
+      (<GalleryPreviewWindow src={require('asset/app/gallery/1.png').default} />)
+    );
+  };
+
   return (
-    <Container>
+    <Container
+      onClick={onClick}
+    >
       <Thumbnail
         src={require('asset/app/gallery/1.png').default}
       />
@@ -75,10 +90,10 @@ const Overlay = styled.div`
 const NameText = styled.div`
   color: white;
 
-  font-size: 22px;
+  font-size: 15px;
 `;
 const DateText = styled.div`
   color: rgba(255, 255, 255, 0.4);
 
-  font-size: 20px;
+  font-size: 13px;
 `;

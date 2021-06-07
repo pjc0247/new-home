@@ -29,8 +29,7 @@ export const TaskBar = observer(({
         {windowStore.windows.map(window => (
           <TaskBarIcon
             key={window.id}
-            active={window.renderState.renderPhase != WindowRenderPhase.FadeOut}
-            icon={window.icon}
+            window={window}
           />
         ))}
         <Push />
