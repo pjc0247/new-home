@@ -5,8 +5,10 @@ import { GridComponent } from 'react-spring-animated-grid/dist';
 import { GalleryThumbnail } from './GalleryThumbnail';
 
 interface GalleryGridProps {
+  items: string[],
 };
 export const GalleryGrid = ({
+  items,
 }: GalleryGridProps) => {
 
   // todotodotodoto
@@ -19,10 +21,10 @@ export const GalleryGrid = ({
         itemMarginBottom={140}
         style={{ width: '100%', height: '600px' }}
       >
-        {[1,2,3,4,5,6].map((x) => (
-          <div key={x}>
+        {items.map((x, idx) => (
+          <div key={idx}>
             <GalleryThumbnail
-              src={require('asset/app/gallery/1.png').default}
+              src={x}
             />
           </div>
         ))}
@@ -30,6 +32,7 @@ export const GalleryGrid = ({
     </Container2>
   );
 
+  /*
   return (
     <Container>
       <GalleryThumbnail
@@ -46,6 +49,7 @@ export const GalleryGrid = ({
       />
     </Container>
   );
+  */
 };
 
 const Container2 = styled.div`

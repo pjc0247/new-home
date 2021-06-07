@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Space } from 'atom/layout';
 import { WindowImpl } from 'state/impl';
 import { Align } from 'utils';
-import { GalleryPreviewWindow } from '../window';
+import { GalleryPreviewWindow, GalleryYoutubeWindow } from '../window';
 
 const AppIcon = require('asset/icon/gallery.png').default;
 
@@ -14,12 +14,21 @@ interface GalleryThumbnailProps {
 export const GalleryThumbnail = ({
   src,
 }: GalleryThumbnailProps) => {
+  const isYoutube = src?.includes('youtu');
+  const youtubeId = src.match(/youtu(?:.*\/v\/|.*v\=|\.be\/)([A-Za-z0-9_\-]{11})/)?.[1];
 
   const onClick = () => {
-    WindowImpl.show(
-      AppIcon,
-      (<GalleryPreviewWindow src={require('asset/app/gallery/1.png').default} />)
-    );
+    if (isYoutube) {
+      WindowImpl.show(
+        AppIcon,
+        (<GalleryYoutubeWindow youtubeId={youtubeId || ''} />)
+      );
+    } else {
+      WindowImpl.show(
+        AppIcon,
+        (<GalleryPreviewWindow src={src} />)
+      );
+    }
   };
 
   return (
@@ -27,8 +36,13 @@ export const GalleryThumbnail = ({
       onClick={onClick}
     >
       <Thumbnail
-        src={require('asset/app/gallery/1.png').default}
+        src={isYoutube ? `https://img.youtube.com/vi/${youtubeId}/0.jpg` : src}
       />
+      {isYoutube && (
+        <PlayIcon
+          src={require('asset/icon/play.png').default}
+        />
+      )}
       <Overlay>
         <NameText>
           asdf
@@ -60,6 +74,8 @@ const Container = styled.div`
       opacity: 1;
     }
   }
+
+  pointer-events: all;
 `;
 const Thumbnail = styled.img`
   width: 100%;
@@ -68,6 +84,13 @@ const Thumbnail = styled.img`
   object-fit: cover;
 
   transition: all 0.35s ease;
+`;
+const PlayIcon = styled.img`
+  position: absolute;
+  right: 64px;
+  bottom: 64px;
+
+  width: 32px;
 `;
 const Overlay = styled.div`
   ${Align.Center}
@@ -82,7 +105,7 @@ const Overlay = styled.div`
   width: calc(100% + 12px);
   height: calc(100% + 12px);
 
-  background-color: rgba(32, 34, 37, 0.9);
+  background-color: rgba(32, 34, 37, 0.75);
   opacity: 0;
 
   transition: all 0.15s ease;

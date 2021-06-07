@@ -1,12 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import styled, { CSSProperties } from 'styled-components';
 
 interface CrossfadeProps {
+  style?: CSSProperties;
   children: React.ReactNode;
 };
 export const Crossfade = ({
   children,
+  ...props
 }: CrossfadeProps) => {
   const realWrapperRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +54,9 @@ export const Crossfade = ({
   }, [children]);
 
   return (
-    <Container>
+    <Container
+      {...props}
+    >
       <RealWrapper
         ref={realWrapperRef}
       >

@@ -48,7 +48,9 @@ export const Github = ({
           icon={require('asset/app/github/icon.png').default}
           title="Github"
         />
-        <Crossfade>
+        <Crossfade  
+          style={{ background: 'rgba(240, 240, 240, 0.8)' }}
+        >
           {contentType === ContentType.Index && (
             <IFrame
               loading="lazy"
