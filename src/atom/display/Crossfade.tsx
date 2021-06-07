@@ -35,6 +35,7 @@ export const Crossfade = ({
     }) as any;
     
     return () => {
+      parent.remove();
       if (child) {
         child.style.position = 'absolute';
         child.style.left = '0px';
