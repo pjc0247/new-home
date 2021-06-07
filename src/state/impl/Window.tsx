@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeAutoObservable } from 'mobx';
 
-import windowStore, { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';
 import { getStores } from 'state';
+import { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';
 
 let globalWindowId = 0;
 let globalWindowZIndex = 100;

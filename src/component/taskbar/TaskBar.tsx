@@ -7,7 +7,6 @@ import { HorizontalLayout, Push } from 'atom/layout';
 import { useStores } from 'state';
 import { Clock } from './Clock';
 import { TaskBarIcon } from './TaskBarIcon';
-import { WindowRenderPhase } from 'state/window';
 
 interface TaskBarProps {
 
