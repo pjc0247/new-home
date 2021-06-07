@@ -9,7 +9,7 @@ import { useStores } from 'state';
 import { Wallpaper } from './Wallpaper';
 import { Shortcut } from './Shortcut';
 import { Blade, BladeApp } from 'app/blade';
-import { Gallery } from 'app/gallery';
+import { Gallery, GalleryApp } from 'app/gallery';
 import { Github, GithubApp } from 'app/github';
 import { App } from 'state/impl';
 
@@ -39,7 +39,7 @@ export const Desktop = observer(({
       <Shortcut
         src={require('asset/icon/gallery.png').default}
         name="Gallery"
-        onClick={() => windowStore.addWindow(require('asset/icon/gallery.png').default, (<Gallery />))}
+        onClick={() => App.launch(GalleryApp)}
       />
       <Shortcut
         src={require('asset/app/github/icon.png').default}

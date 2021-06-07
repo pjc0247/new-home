@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { NavPanel, WindowTitlebar } from 'atom/window';
 import { Space, VerticalLayout } from 'atom/layout';
+import { ScrollArea } from 'atom/display';
 import { GalleryGrid } from './component';
 
 const AppIcon = require('asset/icon/gallery.png').default;
@@ -23,8 +24,10 @@ export const Gallery = ({
           icon={require('asset/icon/gallery.png').default}
           title="Gallery"
         />
-        <GalleryGrid
-        />
+        <ScrollArea>
+          <GalleryGrid
+          />
+        </ScrollArea>
       </Content>
     </>
   );
@@ -32,6 +35,4 @@ export const Gallery = ({
 
 const Content = styled(VerticalLayout)`
   flex: 1;
-
-  padding-left: 20px;
 `;

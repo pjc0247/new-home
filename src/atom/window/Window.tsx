@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Draggable, { DraggableData } from 'react-draggable';
 import { observer } from 'mobx-react';
