@@ -1,7 +1,7 @@
-import { IApp } from "app/IApp";
-import { Github } from "./Github";
-
 import React from 'react';
+
+import { IApp } from 'app/IApp';
+import { Github } from './Github';
 
 export const GithubApp = {
   icon: require('asset/app/github/icon.png').default,

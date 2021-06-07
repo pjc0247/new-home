@@ -8,7 +8,7 @@ import { TaskBar } from 'component/taskbar';
 import { useStores } from 'state';
 import { Wallpaper } from './Wallpaper';
 import { Shortcut } from './Shortcut';
-import { Blade } from 'app/blade';
+import { Blade, BladeApp } from 'app/blade';
 import { Gallery } from 'app/gallery';
 import { Github, GithubApp } from 'app/github';
 import { App } from 'state/impl';
@@ -29,7 +29,7 @@ export const Desktop = observer(({
       <Shortcut
         src={require('asset/app/blade/icon.png').default}
         name="Blade"
-        onClick={() => windowStore.addWindow(require('asset/app/blade/icon.png').default, (<Blade />))}
+        onClick={() => App.launch(BladeApp)}
       />
       <Shortcut
         src={require('asset/icon/browser.png').default}
