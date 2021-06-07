@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react';
 
-import { TaskBar } from 'component/taskbar';
 import { Window } from 'atom/window';
+import { Browser } from 'app/browser';
+import { TaskBar } from 'component/taskbar';
+import { useStores } from 'state';
 import { Wallpaper } from './Wallpaper';
 import { Shortcut } from './Shortcut';
-import { Browser } from 'app/browser';
 
 interface DesktopProps {
 
 };
-export const Desktop = ({
+export const Desktop = observer(({
 
 }: DesktopProps) => {
+  const { windowStore } = useStores();
+
+  useEffect(() => {
+    windowStore.addWindow();
+  }, []);
 
   return (
     <Container>
@@ -24,15 +31,17 @@ export const Desktop = ({
         name="Blade"
       />
 
-      <Browser
-      />
-      <Window
-      >
-        sdf
-      </Window>
+      {windowStore.windows.map(window => (
+        <Window
+          key={window.id}
+          window={window}
+        >
+          sdf
+        </Window>
+      ))}
     </Container>
   )
-};
+});
 
 const Container = styled.div`
 `;

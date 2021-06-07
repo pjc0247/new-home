@@ -5,8 +5,10 @@ import { HorizontalLayout, Push } from 'atom/layout';
 import { Align } from 'utils';
 
 interface WindowHeaderProps {
+  onClose: () => void;
 };
 export const WindowHeader = ({
+  onClose,
 }: WindowHeaderProps) => {
   return (
     <Container>
@@ -21,7 +23,7 @@ export const WindowHeader = ({
       />
       <NavButton
         src={require('asset/icon/close.png').default}
-        onClick={() => {}}
+        onClick={onClose}
       />
     </Container>
   );
