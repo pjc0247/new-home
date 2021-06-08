@@ -42,20 +42,18 @@ export const Codepad = ({
         <WindowTitlebar
           title="Web Codepad"
         />
-        <EditorContainer>
-          <button
-            onClick={onClickDeploy}
-          >
-            Deploy
-          </button>
-          <Editor
-            height="100%"
-            defaultLanguage="javascript"
-            defaultValue={DefaultSnippet}
-            value={code}
-            onChange={e => setCode(e!)}
-          />
-        </EditorContainer>
+        <button
+          onClick={onClickDeploy}
+        >
+          Deploy
+        </button>
+        <Editor
+          height="100%"
+          defaultLanguage="javascript"
+          defaultValue={DefaultSnippet}
+          value={code}
+          onChange={e => setCode(e!)}
+        />
       </Content>
     </>
   );
@@ -63,6 +61,4 @@ export const Codepad = ({
 
 const Content = styled(VerticalLayout)`
   flex: 1;
-`;
-const EditorContainer = styled.div`
 `;
