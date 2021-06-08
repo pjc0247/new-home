@@ -12,7 +12,7 @@ interface NavPanelItem {
   onClick: () => void;
 };
 interface NavPanelProps {
-  icon: string;
+  icon?: string;
   items?: NavPanelItem[];
 };
 export const NavPanel = ({

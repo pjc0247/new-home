@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { HorizontalLayout, Push, Space } from 'atom/layout';
 
 interface WindowTitlebarProps {
-  icon: string;
+  icon?: string;
   title: string;
 };
 export const WindowTitlebar = ({

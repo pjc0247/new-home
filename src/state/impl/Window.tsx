@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeAutoObservable } from 'mobx';
+import { makeAutoObservable, observable } from 'mobx';
 
 import { getStores } from 'state';
 import { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';
@@ -28,7 +28,8 @@ export class WindowImpl implements IWindow {
   private timers: number[] = [];
 
   get isActive() {
-    return this.renderState.renderPhase !== WindowRenderPhase.FadeOut;
+    return this.renderState.renderPhase === WindowRenderPhase.FadeOut
+      || this.renderState.renderPhase === WindowRenderPhase.Minimize;
   }
   get isFocused() {
     const { windowStore } = getStores();
@@ -85,7 +86,6 @@ export class WindowImpl implements IWindow {
 
   saveRef(ref: HTMLDivElement) {
     this.ref = ref;
-    console.log('ref', ref);
   }
   savePosition(x: number, y: number) {
     this.position = { x, y };
@@ -94,6 +94,8 @@ export class WindowImpl implements IWindow {
   focus() {
     const { windowStore } = getStores();
     windowStore.bringToFront(this.id);
+
+    this.minimized = false;
   }
   bringToFront() {
     this.focus();
@@ -118,6 +120,10 @@ export class WindowImpl implements IWindow {
   }
   minimize() {
     this.minimized = true;
+    this.renderState = {
+      ...this.renderState,
+      renderPhase: WindowRenderPhase.Minimize,
+    };
   }
 
   private lerpBounds(targetPosition: IPosition, targetSize: ISize) {

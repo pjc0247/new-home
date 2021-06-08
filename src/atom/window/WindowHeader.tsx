@@ -7,11 +7,13 @@ import { Align } from 'utils';
 
 interface WindowHeaderProps {
   window: WindowImpl;
+  onMinimize: () => void;
   onMaximize: () => void;
   onClose: () => void;
 };
 export const WindowHeader = ({
   window,
+  onMinimize,
   onMaximize,
   onClose,
 }: WindowHeaderProps) => {
@@ -20,7 +22,7 @@ export const WindowHeader = ({
       <Push />
       <NavButton
         src={require('asset/icon/minus.png').default}
-        onClick={() => {}}
+        onClick={onMinimize}
       />
       <NavButton
         src={window.maximized

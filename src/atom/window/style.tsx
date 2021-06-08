@@ -22,3 +22,15 @@ export const WindowFadeOut = `
     }
   }
 `;
+export const WindowMinimize = `
+  @keyframes windowMinimize {
+    from {
+      opacity: 1;
+      transform: scale(1) translateY(0px);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.4) translateY(100px);
+    }
+  }
+`;

@@ -17,6 +17,7 @@ export interface IWindow {
 export enum WindowRenderPhase {
   FadeIn = 'fade_in',
   Normal = 'normal',
+  Minimize = 'minimize',
   FadeOut = 'fade_out',
 };
 export interface IWindowRenderState {

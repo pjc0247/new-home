@@ -7,68 +7,57 @@ import { Crossfade } from 'atom/display';
 
 const AppIcon = require('asset/app/github/icon.png').default;
 
-enum ContentType {
-  Index = 'index',
-  SlowSharp = 'slowSharp',
-  Github = 'github',
-};
+const contents = [
+  {
+    icon: require('asset/icon/user.png').default,
+    label: 'Profile',
+    url: 'https://github-e.com/#/user/pjc0247',
+  },
+  {
+    icon: require('asset/icon/csharp.png').default,
+    label: 'SlowSharp',
+    url: 'https://github-e.com/#/user/pjc0247/repos/SlowSharp?_k=msw5wx',
+  },
+  {
+    icon: require('asset/icon/csharp.png').default,
+    label: 'UniScript',
+    url: 'https://github-e.com/#/user/pjc0247/repos/UniScript?_k=msw5wx',
+  }
+];
 
 interface GithubProps {
 };
 export const Github = ({
   ...props
 }: GithubProps) => {
-  const [contentType, setContentType] = useState(ContentType.Index);
+  const [contentIndex, setContentIndex] = useState(0);
 
   return (
     <>
       <NavPanel
         icon={AppIcon}
-        items={[
-          {
-            icon: require('asset/icon/user.png').default,
-            label: 'Profile',
-            onClick: () => setContentType(ContentType.Index),
-          },
-          {
-            icon: require('asset/icon/csharp.png').default,
-            label: 'SlowSharp',
-            onClick: () => setContentType(ContentType.SlowSharp),
-          },
-          {
-            icon: require('asset/icon/github.png').default,
-            label: 'UniScript',
-            onClick: () => setContentType(ContentType.Github),
-          },
-        ]}
+        items={contents.map((x, idx) => ({
+          icon: x.icon,
+          label: x.label,
+          onClick: () => setContentIndex(idx),
+        }))}
       />
 
       <Content>
         <WindowTitlebar
-          icon={require('asset/app/github/icon.png').default}
           title="Github"
         />
         <Crossfade  
           style={{ background: 'rgba(240, 240, 240, 0.8)' }}
         >
-          {contentType === ContentType.Index && (
-            <IFrame
-              loading="lazy"
-              src="https://github-e.com/#/user/pjc0247"
-            />
-          )}
-          {contentType === ContentType.SlowSharp && (
-            <IFrame
-              loading="lazy"
-              src="https://github-e.com/#/user/pjc0247/repos/SlowSharp?_k=msw5wx"
-            />
-          )}
-          {contentType === ContentType.Github && (
-            <IFrame
-              loading="lazy"
-              src="https://github-e.com/#/user/pjc0247/repos/UniScript?_k=msw5wx"
-            />
-          )}
+          {contents.map((x, idx) => (
+            idx === contentIndex && (
+              <IFrame
+                loading="lazy"
+                src={x.url}
+              />
+            )
+          ))}
         </Crossfade>
       </Content>
     </>

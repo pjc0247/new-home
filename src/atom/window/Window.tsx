@@ -8,7 +8,7 @@ import { WindowImpl } from 'state/impl';
 import { IWindowRenderState, WindowRenderPhase } from 'state/window';
 import { useStores } from 'state';
 import { WindowHeader } from './WindowHeader';
-import { WindowFadeIn, WindowFadeOut } from './style';
+import { WindowFadeIn, WindowFadeOut, WindowMinimize } from './style';
 
 interface WindowProps {
   window: WindowImpl;
@@ -19,8 +19,15 @@ export const Window = observer(({
 }: WindowProps) => {
   const { windowStore } = useStores();
 
+  const onMouseDown = () => {
+    if (!window.isFocused)
+      window.bringToFront();
+  };
   const onDragStop = (e: any, data: DraggableData) => {
     window.savePosition(data.x, data.y);
+  };
+  const onMinimize = () => {
+    window.minimize();
   };
   const onMaximize = () => {
     if (window.maximized) {
@@ -36,11 +43,12 @@ export const Window = observer(({
   return (
     <Draggable
       position={window.position}
+      onMouseDown={onMouseDown}
       onStop={onDragStop}
     >
       <DragContainer
         ref={(ref: any) => window.saveRef(ref)}
-        renderState={window.renderState}
+        isActive={window.isActive}
         zIndex={window.zIndex}
       >
         <Container
@@ -51,6 +59,7 @@ export const Window = observer(({
           <SquareShadow />
           <WindowHeader
             window={window}
+            onMinimize={onMinimize}
             onMaximize={onMaximize}
             onClose={onClose}
           />
@@ -68,7 +77,7 @@ const DragContainer = styled.div<any>`
   ${({ zIndex }) => `
     z-index: ${zIndex};
   `}
-  ${({ renderState: { renderPhase } }) => renderPhase === WindowRenderPhase.FadeOut ? `
+  ${({ isActive }) => isActive ? `
     pointer-events: none;
   ` : `
     pointer-events: all;
@@ -99,6 +108,11 @@ const Container = styled.div<Partial<WindowProps> & {
     [WindowRenderPhase.Normal]: `
       opacity: 1;
     `,
+    [WindowRenderPhase.Minimize]: `
+      transition: all 0.35s ease;
+      animation: windowMinimize 0.35s ease;
+      animation-fill-mode: forwards;
+    `,
     [WindowRenderPhase.FadeOut]: `
       transition: all 0.5s ease;
       animation: windowFadeOut 0.5s ease;
@@ -108,4 +122,5 @@ const Container = styled.div<Partial<WindowProps> & {
 
   ${WindowFadeIn}
   ${WindowFadeOut}
+  ${WindowMinimize}
 `;
