@@ -66,6 +66,8 @@ const Container = styled.div`
   border-radius: 7px;
   overflow: hidden;
 
+  background-color: rgba(128, 128, 128, 0.5);
+
   &:hover {
     img {
       transform: scale(1.25);
@@ -74,8 +76,6 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-
-  pointer-events: all;
 `;
 const Thumbnail = styled.img`
   width: 100%;

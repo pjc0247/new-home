@@ -12,17 +12,15 @@ export const GalleryPreviewWindow = ({
   ...props
 }: GalleryPreviewWindowProps) => {
   return (
-    <>
-      <Content>
-        <WindowTitlebar
-          icon={require('asset/icon/gallery.png').default}
-          title="Preview"
-        />
-        <Image
-          src={src}
-        />
-      </Content>
-    </>
+    <Content>
+      <WindowTitlebar
+        icon={require('asset/icon/gallery.png').default}
+        title="Preview"
+      />
+      <Image
+        src={src}
+      />
+    </Content>
   );
 };
 
@@ -30,5 +28,8 @@ const Content = styled(VerticalLayout)`
   flex: 1;
 `;
 const Image = styled.img`
+  width: 100%;
+  height: 100%;
+
   object-fit: cover;
 `;
