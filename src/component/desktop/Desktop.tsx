@@ -85,7 +85,8 @@ export const Desktop = observer(({
 });
 
 const Container = styled.div`
-  position: relative;
+  position: fixed;
+  width: 100vw;
   height: 100vh;
 `;
 
