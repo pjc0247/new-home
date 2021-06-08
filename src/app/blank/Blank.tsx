@@ -12,17 +12,15 @@ export const Blank = ({
   ...props
 }: BlankProps) => {
   return (
-    <>
-      <Content>
-        <WindowTitlebar
-          icon={AppIcon}
-          title="Blank"
-        />
-        <HelloWorldText>
-          Hello World!
-        </HelloWorldText>
-      </Content>
-    </>
+    <Content>
+      <WindowTitlebar
+        icon={AppIcon}
+        title="Blank"
+      />
+      <HelloWorldText>
+        Hello World!
+      </HelloWorldText>
+    </Content>
   );
 };
 
