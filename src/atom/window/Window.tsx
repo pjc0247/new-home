@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Draggable, { DraggableData } from 'react-draggable';
 import { observer } from 'mobx-react';
@@ -8,6 +8,7 @@ import { WindowImpl } from 'state/impl';
 import { IWindowRenderState, WindowRenderPhase } from 'state/window';
 import { useStores } from 'state';
 import { WindowHeader } from './WindowHeader';
+import { WindowContextProvider } from './WindowContext';
 import { WindowFadeIn, WindowFadeOut, WindowMinimize } from './style';
 
 interface WindowProps {
@@ -41,32 +42,36 @@ export const Window = observer(({
   };
 
   return (
-    <Draggable
-      position={window.position}
-      onMouseDown={onMouseDown}
-      onStop={onDragStop}
+    <WindowContextProvider
+      window={window}
     >
-      <DragContainer
-        ref={(ref: any) => window.saveRef(ref)}
-        isActive={window.isActive}
-        zIndex={window.zIndex}
+      <Draggable
+        position={window.position}
+        onMouseDown={onMouseDown}
+        onStop={onDragStop}
       >
-        <Container
-          size={window.size}
-          renderState={window.renderState}
-          {...props}
+        <DragContainer
+          ref={(ref: any) => window.saveRef(ref)}
+          isActive={window.isActive}
+          zIndex={window.zIndex}
         >
-          <SquareShadow />
-          <WindowHeader
-            window={window}
-            onMinimize={onMinimize}
-            onMaximize={onMaximize}
-            onClose={onClose}
-          />
-          {window.Component}
-        </Container>
-      </DragContainer>
-    </Draggable>
+          <Container
+            size={window.size}
+            renderState={window.renderState}
+            {...props}
+          >
+            <SquareShadow />
+            <WindowHeader
+              window={window}
+              onMinimize={onMinimize}
+              onMaximize={onMaximize}
+              onClose={onClose}
+            />
+            {window.Component}
+          </Container>
+        </DragContainer>
+      </Draggable>
+    </WindowContextProvider>
   );
 });
 

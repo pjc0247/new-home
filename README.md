@@ -23,3 +23,20 @@ const onClickGithub = () => {
 ```
 
 [Blank Application](src/app/blank)
+
+
+Retrieving `window` object
+----
+```tsx
+const YourHandsomeApp = () => {
+  const window = useWindow();
+
+  const onClickClose = () => {
+    window.close();
+  };
+
+  return (
+    <>Hello</>
+  );
+};
+```
