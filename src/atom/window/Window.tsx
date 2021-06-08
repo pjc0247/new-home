@@ -83,9 +83,9 @@ const DragContainer = styled.div<any>`
     z-index: ${zIndex};
   `}
   ${({ isActive }) => isActive ? `
-    pointer-events: none;
-  ` : `
     pointer-events: all;
+  ` : `
+    pointer-events: none;
   `}
 `;
 const Container = styled.div<Partial<WindowProps> & {

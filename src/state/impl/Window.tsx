@@ -28,8 +28,11 @@ export class WindowImpl implements IWindow {
   private timers: number[] = [];
 
   get isActive() {
-    return this.renderState.renderPhase === WindowRenderPhase.FadeOut
-      || this.renderState.renderPhase === WindowRenderPhase.Minimize;
+    if (this.renderState.renderPhase === WindowRenderPhase.FadeOut
+      || this.renderState.renderPhase === WindowRenderPhase.Minimize) {
+      return false;
+    }
+    return true;
   }
   get isFocused() {
     const { windowStore } = getStores();

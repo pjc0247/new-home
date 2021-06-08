@@ -66,7 +66,7 @@ export const Desktop = observer(({
           onClick={() => window.open('https://github.com/pjc0247/new-home')}
         />
         <Shortcut
-          src={require('asset/icon/code.png').default}
+          src={require('asset/app/codepad/icon.png').default}
           name="CodePad"
           onClick={() => App.launch(CodepadApp)}
         />

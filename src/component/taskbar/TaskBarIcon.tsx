@@ -58,6 +58,21 @@ const Icon = styled.img<Partial<TaskBarIconProps> & any>`
   height: 17px;
 
   border-radius: 5px;
+
+  transition: all 0.8s ease;
+
+  ${({ status }: { status: IconStatus }) => ({
+    [IconStatus.None]: `
+      opacity: 0;
+      transform: translateY(100px);
+    `,
+    [IconStatus.Focused]: `
+      opacity: 1;
+    `,
+    [IconStatus.Active]: `
+      opacity: 0.5;
+    `,
+  })[status!]}
 `;
 const ActiveBar = styled.div<Partial<TaskBarIconProps> & any>`
   position: absolute;
@@ -66,20 +81,22 @@ const ActiveBar = styled.div<Partial<TaskBarIconProps> & any>`
   margin-left: auto;
   margin-right: auto;
 
-  transition: width, height 0.3s ease;
+  background: linear-gradient(to right, #FAACA8, #DDD6F3);
+
+  transition: all 0.3s ease;
 
   ${({ status }: { status: IconStatus }) => ({
     [IconStatus.None]: `
+      width: 0%;
+      height: 0.5px;
     `,
     [IconStatus.Focused]: `
       width: 100%;
       height: 2.5px;
-      background: linear-gradient(to right, #FAACA8, #DDD6F3);
     `,
     [IconStatus.Active]: `
       width: 85%;
       height: 1px;
-      background: linear-gradient(to right, #FAACA8, #DDD6F3);
     `,
   })[status!]}
 `;

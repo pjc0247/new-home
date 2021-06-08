@@ -8,7 +8,7 @@ import { WindowImpl } from 'state/impl';
 import { CodepadPreviewWindow } from './window';
 import { DefaultSnippet } from './snippet';
 
-const AppIcon = require('asset/icon/code.png').default;
+const AppIcon = require('asset/app/codepad/icon.png').default;
 
 interface CodepadProps {
 };
