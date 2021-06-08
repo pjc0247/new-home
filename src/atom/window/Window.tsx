@@ -52,7 +52,7 @@ export const Window = observer(({
       >
         <DragContainer
           ref={(ref: any) => window.saveRef(ref)}
-          isActive={window.isActive}
+          isResponsible={window.isResponsible}
           zIndex={window.zIndex}
         >
           <Container
@@ -82,7 +82,7 @@ const DragContainer = styled.div<any>`
   ${({ zIndex }) => `
     z-index: ${zIndex};
   `}
-  ${({ isActive }) => isActive ? `
+  ${({ isResponsible }) => isResponsible ? `
     pointer-events: all;
   ` : `
     pointer-events: none;

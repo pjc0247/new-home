@@ -28,10 +28,15 @@ export class WindowImpl implements IWindow {
   private timers: number[] = [];
 
   get isActive() {
-    if (this.renderState.renderPhase === WindowRenderPhase.FadeOut
-      || this.renderState.renderPhase === WindowRenderPhase.Minimize) {
+    if (this.renderState.renderPhase === WindowRenderPhase.FadeOut)
       return false;
-    }
+    return true;
+  }
+  get isResponsible() {
+    if (!this.isActive)
+      return false;
+    if (this.renderState.renderPhase === WindowRenderPhase.Minimize)
+      return false;
     return true;
   }
   get isFocused() {
@@ -103,6 +108,10 @@ export class WindowImpl implements IWindow {
   bringToFront() {
     this.focus();
     this.zIndex = globalWindowZIndex ++;
+    this.renderState = {
+      ...this.renderState,
+      renderPhase: WindowRenderPhase.Normal,
+    };
   }
   unmaximize() {
     this.maximized = false;

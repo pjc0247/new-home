@@ -71,6 +71,7 @@ const Icon = styled.img<Partial<TaskBarIconProps> & any>`
     `,
     [IconStatus.Active]: `
       opacity: 0.5;
+      transform: scale(0.85);
     `,
   })[status!]}
 `;
