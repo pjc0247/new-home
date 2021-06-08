@@ -13,6 +13,7 @@ import { Gallery, GalleryApp } from 'app/gallery';
 import { Github, GithubApp } from 'app/github';
 import { App } from 'state/impl';
 import { RookieApp } from 'app/rookie';
+import { BlankApp } from 'app/blank';
 
 interface DesktopProps {
 
@@ -28,6 +29,11 @@ export const Desktop = observer(({
       <TaskBar />
 
       <ShortcutContainer>
+        <Shortcut
+          src={require('asset/app/blank/icon.png').default}
+          name="Blank"
+          onClick={() => App.launch(BlankApp)}
+        />
         <Shortcut
           src={require('asset/app/blade/icon.png').default}
           name="Blade"
@@ -52,6 +58,11 @@ export const Desktop = observer(({
           src={require('asset/app/rookie/icon.png').default}
           name="Rookie"
           onClick={() => App.launch(RookieApp)}
+        />
+        <Shortcut
+          src={require('asset/icon/code.png').default}
+          name="Source Code"
+          onClick={() => window.open('https://github.com/pjc0247/new-home')}
         />
       </ShortcutContainer>
 
