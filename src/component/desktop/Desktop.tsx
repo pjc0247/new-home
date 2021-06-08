@@ -14,6 +14,7 @@ import { Github, GithubApp } from 'app/github';
 import { App } from 'state/impl';
 import { RookieApp } from 'app/rookie';
 import { BlankApp } from 'app/blank';
+import { CodepadApp } from 'app/codepad';
 
 interface DesktopProps {
 
@@ -63,6 +64,11 @@ export const Desktop = observer(({
           src={require('asset/icon/code.png').default}
           name="Source Code"
           onClick={() => window.open('https://github.com/pjc0247/new-home')}
+        />
+        <Shortcut
+          src={require('asset/icon/code.png').default}
+          name="CodePad"
+          onClick={() => App.launch(CodepadApp)}
         />
       </ShortcutContainer>
 
