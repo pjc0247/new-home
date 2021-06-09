@@ -68,24 +68,11 @@ export const Ide = ({
   return (
     <Container>
       <TreeView>
-        <Tree
+        <DirectoryTree
+          multiple
+          defaultExpandAll
           onExpand={() => {}}
-          treeData={[
-            {
-              key:'0',
-              title: 'a',
-              children: [
-                { key:'0-0', title:'b', isLeaf: true}
-              ]
-            },
-            {
-              key:'1',
-              title: 'b',
-              children: [
-                { key:'1-1', title:'b', isLeaf: true}
-              ]
-            }
-          ]}
+          treeData={tree}
         />
       </TreeView>
       <CodeView>
