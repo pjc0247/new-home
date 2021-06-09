@@ -4,12 +4,14 @@ import styled from 'styled-components';
 import { Window, NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
 import { Crossfade } from 'atom/display';
+import { Ide } from 'component/ide';
 
 const AppIcon = require('asset/app/rookie/icon.png').default;
 
 enum ContentType {
   Index = 'index',
   Github = 'github',
+  Files = 'files',
 };
 
 interface RookieProps {
@@ -34,12 +36,16 @@ export const Rookie = ({
             label: 'Github',
             onClick: () => setContentType(ContentType.Github),
           },
+          {
+            icon: require('asset/icon/code.png').default,
+            label: 'SourceCode',
+            onClick: () => setContentType(ContentType.Files),
+          },
         ]}
       />
 
       <Content>
         <WindowTitlebar
-          icon={require('asset/app/rookie/icon.png').default}
           title="Rookie"
         />
         <Crossfade
@@ -55,6 +61,10 @@ export const Rookie = ({
             <IFrame
               loading="lazy"
               src="https://github-e.com/#/user/pjc0247/repos/rookie.lang"
+            />
+          )}
+          {contentType === ContentType.Files && (
+            <Ide
             />
           )}
         </Crossfade>
