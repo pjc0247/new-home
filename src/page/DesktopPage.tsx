@@ -9,7 +9,8 @@ import { GithubApp } from 'app/github';
 import { RookieApp } from 'app/rookie';
 import { BlankApp } from 'app/blank';
 import { CodepadApp } from 'app/codepad';
-import { LineFeed } from 'atom/layout';
+import { LineFeed, Push } from 'atom/layout';
+import { LargeClock } from 'component/widget';
 
 export const DesktopPage = ({
 
@@ -19,6 +20,8 @@ export const DesktopPage = ({
       <SectionLabel>
         Personal Profile
       </SectionLabel>
+      <Push />
+      <LargeClock />
       <LineFeed />
 
       <Shortcut
@@ -84,4 +87,6 @@ const SectionLabel = styled.div`
   color: white;
 
   font-size: 14px;
+
+  user-select: none;
 `;
