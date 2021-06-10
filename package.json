@@ -36,7 +36,7 @@
     "download": "node prebuild.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:travis": "CI='' react-app-rewired build",
+    "build:travis": "yarn download && CI='' react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
