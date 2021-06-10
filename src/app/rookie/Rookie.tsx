@@ -5,6 +5,8 @@ import { Window, NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
 import { Crossfade } from 'atom/display';
 import { Ide } from 'component/ide';
+import { WindowImpl } from 'state/impl';
+import { CodeView } from 'app/codeview/CodeView';
 
 const AppIcon = require('asset/app/rookie/icon.png').default;
 
@@ -39,7 +41,10 @@ export const Rookie = ({
           {
             icon: require('asset/icon/code.png').default,
             label: 'SourceCode',
-            onClick: () => setContentType(ContentType.Files),
+            onClick: () => WindowImpl.show(require('asset/icon/code.png').default, (<CodeView />), {
+              width: 1040,
+              height: 640,
+            }),
           },
         ]}
       />
@@ -64,10 +69,13 @@ export const Rookie = ({
             />
           )}
           {contentType === ContentType.Files && (
-            <Ide
-            />
+            <div />
           )}
         </Crossfade>
+        {contentType === ContentType.Files && (
+          <Ide
+          />
+        )}
       </Content>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import JSZip from 'jszip';
 import { Tree } from 'antd';
+import Editor from '@monaco-editor/react';
 
 const { DirectoryTree } = Tree;
 
@@ -12,6 +13,10 @@ export const Ide = ({
 
 }: IdeProps) => {
   const [tree, setTree] = useState([]);
+  const [zip, setZip] = useState<JSZip>();
+  const [editor, setEditor] = useState<any>();
+  const [title, setTitle] = useState('');
+  const [code, setCode] = useState('');
 
   useEffect(() => {
     fetch(process.env.PUBLIC_URL + '/repo/slowsharp.zip')       // 1) fetch the url
@@ -27,6 +32,7 @@ export const Ide = ({
       if (!zip) return null;
       console.log(zip.files);
       const root = zip.folder(Object.values(zip.files)[0].name)!;
+      setZip(root);
       console.log(root.files);
 
       let data: any[] = [];
@@ -44,6 +50,7 @@ export const Ide = ({
             title: matches?.[1],
             isLeaf: !file.dir,
             children: [],
+            file,
           };
           if (file.dir) {
             build(depth + 1, file.name, node.folder(file.name)!, d.children);
@@ -65,32 +72,53 @@ export const Ide = ({
     })
   }, []);
 
+  const onSelect = async (keys: React.Key[], { node }: any) => {
+    console.log(node);
+    const content = await node.file.async('string');
+    console.log(zip?.file(node.file.name), content);
+    setCode(content!);
+    setTitle(node.file.name);
+    editor.setScrollPosition({scrollTop: 0});
+  };
+
   return (
     <Container>
       <TreeView>
         <DirectoryTree
-          multiple
-          defaultExpandAll
-          onExpand={() => {}}
           treeData={tree}
+          onSelect={onSelect}
         />
       </TreeView>
       <CodeView>
-
+        <Editor
+          height="100%"
+          defaultLanguage="csharp"
+          theme="vs-dark"
+          value={code}
+          onMount={setEditor}
+        />
       </CodeView>
     </Container>
   );
 };
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+
+  overflow: hidden;
 `;
 const TreeView = styled.div`
-  width: 200px;
+  width: 300px;
   height: 100%;
 
   background: white;
 
+  overflow: auto;
+
   padding: 10px 10px;
 `;
 const CodeView = styled.div`
+  flex: 1;
 `;
