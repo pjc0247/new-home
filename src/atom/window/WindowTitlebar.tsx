@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { HorizontalLayout, Push, Space } from 'atom/layout';
+import { useWindow } from './WindowContext';
 
 interface WindowTitlebarProps {
   icon?: string;
@@ -11,6 +12,8 @@ export const WindowTitlebar = ({
   icon,
   title,
 }: WindowTitlebarProps) => {
+  const window = useWindow();
+
   return (
     <Container
       align="center"
@@ -24,7 +27,7 @@ export const WindowTitlebar = ({
         </>
       )}
       <TitleText>
-        {title.toUpperCase()}
+        {window.title || title.toUpperCase()}
       </TitleText>
     </Container>
   );

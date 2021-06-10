@@ -33,6 +33,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "download": "node prebuild.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:travis": "CI='' react-app-rewired build",
@@ -62,6 +63,7 @@
     "@types/babel__standalone": "^7.1.3",
     "@types/luxon": "^1.26.5",
     "@types/styled-components": "^5.1.9",
+    "node-fetch": "^2.6.1",
     "react-app-rewired": "^2.1.8"
   }
 }

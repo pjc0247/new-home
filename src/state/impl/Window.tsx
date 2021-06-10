@@ -12,6 +12,7 @@ export class WindowImpl implements IWindow {
 
   id: string;
   icon: string;
+  title: string;
   Component: React.ReactNode;
 
   position: IPosition;
@@ -54,6 +55,7 @@ export class WindowImpl implements IWindow {
     
     this.id = `w${globalWindowId++}`;
     this.icon = icon;
+    this.title = '';
     this.Component = Component;
     this.position = this.getInitialPosition();
     this.prevPosition = this.position;

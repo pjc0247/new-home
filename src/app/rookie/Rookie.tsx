@@ -41,10 +41,18 @@ export const Rookie = ({
           {
             icon: require('asset/icon/code.png').default,
             label: 'SourceCode',
-            onClick: () => WindowImpl.show(require('asset/icon/code.png').default, (<CodeView />), {
-              width: 1040,
-              height: 640,
-            }),
+            onClick: () => {
+              WindowImpl.show(
+                require('asset/icon/code.png').default,
+                <CodeView
+                  url={'/repo/slowsharp.zip'}
+                />,
+                {
+                  width: 1040,
+                  height: 640,
+                },
+              );
+            },
           },
         ]}
       />
