@@ -56,12 +56,19 @@ export const Ide = ({
     build(1, Object.values(zip.files)[0].name, root, data);
     data = data.sort((a: any, b: any) => a.dir ? (b.dir ? 1 : -1) : -1);
     setTree(data as any);
+
+    loadFile(root.file('readme.md'));
+  };
+  const loadFile = async (file: JSZip.JSZipObject | null) => {
+    if (!file) return;
+
+    const content = await file.async('string');
+    setCode(content!.replace('\ufeff', ''));  // remove BOM
+    editor?.setScrollPosition({ scrollTop: 0 });
+    window.title = `CODEVIEW - ${file.name}`;
   };
   const onSelect = async (keys: React.Key[], { node }: any) => {
-    const content = await node.file.async('string');
-    setCode(content!.replace('\ufeff', ''));  // remove BOM
-    editor.setScrollPosition({ scrollTop: 0 });
-    window.title = `CODEVIEW - ${node.file.name}`;
+    loadFile(node.file);
   };
 
   return (
