@@ -45,7 +45,8 @@ export const Rookie = ({
               WindowImpl.show(
                 require('asset/icon/code.png').default,
                 <CodeView
-                  url={'/repo/slowsharp.zip'}
+                  language="cpp"
+                  url={'/repo/rookie.lang.zip'}
                 />,
                 {
                   width: 1040,
@@ -80,10 +81,6 @@ export const Rookie = ({
             <div />
           )}
         </Crossfade>
-        {contentType === ContentType.Files && (
-          <Ide
-          />
-        )}
       </Content>
     </>
   );

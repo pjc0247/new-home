@@ -9,9 +9,11 @@ import { useWindow } from 'atom/window';
 const { DirectoryTree } = Tree;
 
 interface IdeProps {
+  language: string;
   url: string;
 };
 export const Ide = ({
+  language,
   url,
 }: IdeProps) => {
   const window = useWindow();
@@ -73,7 +75,7 @@ export const Ide = ({
       <CodeView>
         <Editor
           height="100%"
-          defaultLanguage="csharp"
+          defaultLanguage={language}
           theme="vs-dark"
           value={code}
           onMount={setEditor}

@@ -8,9 +8,11 @@ import { Ide } from 'component/ide';
 const AppIcon = require('asset/icon/code.png').default;
 
 interface CodeViewProps {
+  language: string;
   url: string;
 };
 export const CodeView = ({
+  language,
   url,
   ...props
 }: CodeViewProps) => {
@@ -22,6 +24,7 @@ export const CodeView = ({
         title="CodeView"
       />
       <Ide
+        language={language}
         url={url}
       />
     </Content>
