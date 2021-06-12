@@ -48,13 +48,19 @@ export const Ide = ({
         };
         if (file.dir) {
           build(depth + 1, file.name, node.folder(file.name)!, d.children);
-          d.children = d.children.sort((a: any, b: any) => a.dir ? 1 : -1);
+          d.children = [
+            ...d.children.filter((x: any) => x.file.dir),
+            ...d.children.filter((x: any) => !x.file.dir),
+          ];
         }
         dataNode.push(d);
       }
     };
     build(1, Object.values(zip.files)[0].name, root, data);
-    data = data.sort((a: any, b: any) => a.dir ? (b.dir ? 1 : -1) : -1);
+    data = [
+      ...data.filter((x) => x.file.dir),
+      ...data.filter((x) => !x.file.dir),
+    ];
     setTree(data as any);
 
     loadFile(root.file('readme.md'));
