@@ -16,6 +16,15 @@ const downloadRepo = async (owner, name, branch = 'master') => {
     `./public/repo/${name}.zip`,
   );
 };
+const work = async () => {
+  for (repo of repositories) {
+    downloadRepo(...repo);
+  }
+};
 
-downloadRepo('pjc0247', 'SlowSharp');
-downloadRepo('pjc0247', 'rookie.lang');
+const repositories = [
+  ['pjc0247', 'SlowSharp'],
+  ['pjc0247', 'rookie.lang'],
+];
+
+work();
