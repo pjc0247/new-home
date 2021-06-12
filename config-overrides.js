@@ -1,9 +1,3 @@
-const path = require('path');
+const { useBabelRc, override } = require("customize-cra");
 
-module.exports = function override(config) {
-  config.resolve = {
-    ...config.resolve,
-  };
-
-  return config;
-};
+module.exports = override(useBabelRc());

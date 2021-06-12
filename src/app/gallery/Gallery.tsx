@@ -6,6 +6,9 @@ import { Space, VerticalLayout } from 'atom/layout';
 import { Crossfade, ScrollArea } from 'atom/display';
 import { GalleryGrid } from './component';
 
+// @ts-ignore
+import * as rania from '../../asset/app/gallery/rania/*.png';
+
 const AppIcon = require('asset/icon/gallery.png').default;
 
 enum ContentType {
@@ -63,6 +66,7 @@ export const Gallery = ({
             <GalleryGrid
               items={[
                 require('asset/app/gallery/boxel/1.png').default,
+                ...(Object.values(rania as any)),
               ]}
             />
           </ScrollArea>
