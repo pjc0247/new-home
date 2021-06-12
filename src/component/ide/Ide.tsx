@@ -74,6 +74,7 @@ export const Ide = ({
     window.title = `CODEVIEW - ${file.name}`;
   };
   const onSelect = async (keys: React.Key[], { node }: any) => {
+    if (node.file.dir) return;
     loadFile(node.file);
   };
 
