@@ -40,3 +40,10 @@ const YourHandsomeApp = () => {
   );
 };
 ```
+
+Built-in Applications
+----
+
+#### CodeView
+
+#### Gallery
