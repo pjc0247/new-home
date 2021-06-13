@@ -46,4 +46,8 @@ Built-in Applications
 
 #### CodeView
 
+<img src="img/codeview.png" width="640" />
+
 #### Gallery
+
+<img src="img/gallery.png" width="640" />
