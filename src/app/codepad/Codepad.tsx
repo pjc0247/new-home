@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Editor from '@monaco-editor/react';
 
-import { NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
+import { NavPanel, WindowTitlebar } from 'component/window';
 import { WindowImpl } from 'state/impl';
 import { CodepadPreviewWindow } from './window';
 import { DefaultSnippet } from './snippet';

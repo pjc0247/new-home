@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeAutoObservable, observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 import { getStores } from 'state';
 import { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';

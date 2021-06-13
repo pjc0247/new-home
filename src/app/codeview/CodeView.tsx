@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Window, NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
+import { WindowTitlebar } from 'component/window';
 import { Ide } from 'component/ide';
 
 const AppIcon = require('asset/icon/code.png').default;

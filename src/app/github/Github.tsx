@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
 import { Crossfade } from 'atom/display';
+import { NavPanel, WindowTitlebar } from 'component/window';
 
 const AppIcon = require('asset/app/github/icon.png').default;
 

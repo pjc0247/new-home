@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Window, NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
+import { Window, NavPanel, WindowTitlebar } from 'component/window';
 
 const AppIcon = require('asset/icon/browser.png').default;
 

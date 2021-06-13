@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
+import { WindowTitlebar } from 'component/window';
 
 const AppIcon = require('asset/app/blade/icon.png').default;
 

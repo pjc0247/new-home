@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Window, NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
 import { Crossfade } from 'atom/display';
-import { Ide } from 'component/ide';
+import { NavPanel, WindowTitlebar } from 'component/window';
 import { WindowImpl } from 'state/impl';
 import { CodeView } from 'app/codeview/CodeView';
 

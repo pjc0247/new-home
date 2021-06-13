@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { transform } from '@babel/standalone';
 
-import { NavPanel, WindowTitlebar } from 'atom/window';
 import { VerticalLayout } from 'atom/layout';
+import { NavPanel, WindowTitlebar } from 'component/window';
 
 const evalInContext = (js: string, context: object) => {
   return function() { return eval(js); }.call(context);

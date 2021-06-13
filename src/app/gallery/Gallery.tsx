@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { NavPanel, WindowTitlebar } from 'atom/window';
+import { NavPanel, WindowTitlebar } from 'component/window';
 import { Space, VerticalLayout } from 'atom/layout';
 import { Crossfade, ScrollArea } from 'atom/display';
 import { GalleryGrid } from './component';

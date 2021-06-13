@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { WindowTitlebar } from 'atom/window';
+import { WindowTitlebar } from 'component/window';
 import { VerticalLayout } from 'atom/layout';
 
 interface GalleryYoutubeWindowProps {

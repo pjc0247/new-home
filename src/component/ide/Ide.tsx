@@ -4,7 +4,7 @@ import JSZip from 'jszip';
 import { Tree } from 'antd';
 import Editor from '@monaco-editor/react';
 
-import { useWindow } from 'atom/window';
+import { useWindow } from 'component/window';
 
 const { DirectoryTree } = Tree;
 

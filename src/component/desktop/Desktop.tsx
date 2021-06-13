@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
 
-import { Window } from 'atom/window';
+import { Window } from 'component/window';
 import { TaskBar } from 'component/taskbar';
 import { useStores } from 'state';
 import { Wallpaper } from './Wallpaper';

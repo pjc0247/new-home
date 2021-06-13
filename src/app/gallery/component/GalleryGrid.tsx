@@ -11,11 +11,8 @@ export const GalleryGrid = ({
   items,
 }: GalleryGridProps) => {
 
-  // todotodotodoto
-  // todotodotodoto
-
   return (
-    <Container2>
+    <Container>
       <GridComponent
         itemMarginRight={10}
         itemMarginBottom={140}
@@ -29,42 +26,10 @@ export const GalleryGrid = ({
           </div>
         ))}
       </GridComponent>
-    </Container2>
-  );
-
-  /*
-  return (
-    <Container>
-      <GalleryThumbnail
-        src={require('asset/app/gallery/1.png').default}
-      />
-      <GalleryThumbnail
-        src={require('asset/app/gallery/1.png').default}
-      />
-      <GalleryThumbnail
-        src={require('asset/app/gallery/1.png').default}
-      />
-      <GalleryThumbnail
-        src={require('asset/app/gallery/1.png').default}
-      />
     </Container>
   );
-  */
 };
 
-const Container2 = styled.div`
-  padding: 12px 12px 12px 12px;
-`;
-
 const Container = styled.div`
-  display: flex;
-  width: 100%;
-  flex: 1;
-
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  gap: 20px;
-
-  padding: 0px 20px 20px 20px;
+  padding: 12px 12px 12px 12px;
 `;
