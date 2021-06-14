@@ -13,7 +13,8 @@ import * as rania from '../../asset/app/gallery/rania/*.png';
 const AppIcon = require('asset/icon/vr.png').default;
 
 enum ContentType {
-  Index = 'video1',
+  MiniatureTDVideo = 'miniature_td_video',
+  MiniatureTDWeb = 'miniature_td_web',
   Index2 = 'video2',
   Gallery = 'gallery',
 };
@@ -23,7 +24,7 @@ interface VRProps {
 export const VR = ({
   ...props
 }: VRProps) => {
-  const [contentType, setContentType] = useState(ContentType.Index);
+  const [contentType, setContentType] = useState(ContentType.MiniatureTDWeb);
 
   return (
     <>
@@ -31,9 +32,14 @@ export const VR = ({
         icon={AppIcon}
         items={[
           {
+            icon: require('asset/icon/browser.png').default,
+            label: 'Miniature TD - Website',
+            onClick: () => setContentType(ContentType.MiniatureTDWeb),
+          },
+          {
             icon: require('asset/icon/youtube.png').default,
             label: 'Miniature TD',
-            onClick: () => setContentType(ContentType.Index),
+            onClick: () => setContentType(ContentType.MiniatureTDVideo),
           },
           {
             icon: require('asset/icon/youtube.png').default,
@@ -53,9 +59,14 @@ export const VR = ({
           icon={require('asset/icon/vr.png').default}
           title="VR Games"
         />
-        {contentType === ContentType.Index && (
+        {contentType === ContentType.MiniatureTDVideo && (
           <YoutubePlayer
             url="https://www.youtube.com/embed/Gl-8ULBj490"
+          />
+        )}
+        {contentType === ContentType.MiniatureTDWeb && (
+          <YoutubePlayer
+            url="https://miniaturetd.herokuapp.com/"
           />
         )}
         {contentType === ContentType.Index2 && (
