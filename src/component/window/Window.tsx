@@ -4,8 +4,8 @@ import Draggable, { DraggableData } from 'react-draggable';
 import { observer } from 'mobx-react';
 
 import { SquareShadow } from 'atom/shadow';
-import { WindowImpl } from 'state/impl';
-import { IWindowRenderState, WindowRenderPhase } from 'state/window';
+import { WindowImpl } from 'state/window';
+import { IWindowRenderState, WindowRenderPhase } from 'state/windowStore';
 import { useStores } from 'state';
 import { WindowHeader } from './WindowHeader';
 import { WindowContextProvider } from './WindowContext';

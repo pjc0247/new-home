@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 
-import { WindowImpl } from 'state/impl';
+import { WindowImpl } from 'state/window';
 
 interface IWindowContext {
   window: WindowImpl;

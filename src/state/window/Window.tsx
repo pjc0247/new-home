@@ -1,8 +1,9 @@
 import React from 'react';
 import { makeAutoObservable } from 'mobx';
 
+import { App } from 'state/app';
 import { getStores } from 'state';
-import { IWindow, IWindowRenderState, WindowRenderPhase } from '../window';
+import { IWindow, IWindowRenderState, WindowRenderPhase } from '../windowStore';
 
 let globalWindowId = 0;
 let globalWindowZIndex = 100;
@@ -10,6 +11,7 @@ let globalWindowZIndex = 100;
 export class WindowImpl implements IWindow {
   static readonly DefaultSize: ISize = { width: 640, height: 480 };
 
+  app: App;
   id: string;
   icon: string;
   title: string;
@@ -44,16 +46,12 @@ export class WindowImpl implements IWindow {
     const { windowStore } = getStores();
     return windowStore.activeWindows[windowStore.activeWindows.length - 1] === this;
   }
-
-  static show(icon: string, Component: React.ReactNode, size?: ISize) {
-    const { windowStore } = getStores();
-    windowStore.addWindow(icon, Component, size);
-  }
-
-  constructor(icon: string, Component: React.ReactNode, size?: ISize) {
+ 
+  constructor(app: App, icon: string, Component: React.ReactNode, size?: ISize) {
     makeAutoObservable(this);
     
     this.id = `w${globalWindowId++}`;
+    this.app = app;
     this.icon = icon;
     this.title = '';
     this.Component = Component;

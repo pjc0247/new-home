@@ -4,7 +4,8 @@ import Editor from '@monaco-editor/react';
 
 import { VerticalLayout } from 'atom/layout';
 import { NavPanel, WindowTitlebar } from 'component/window';
-import { WindowImpl } from 'state/impl';
+import { WindowImpl } from 'state/window';
+import { useApp } from 'state/app';
 import { CodepadPreviewWindow } from './window';
 import { DefaultSnippet } from './snippet';
 
@@ -15,6 +16,7 @@ interface CodepadProps {
 export const Codepad = ({
   ...props
 }: CodepadProps) => {
+  const app = useApp();
   const [code, setCode] = useState(DefaultSnippet);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export const Codepad = ({
   }, []);
 
   const onClickDeploy = () => {
-    WindowImpl.show(AppIcon, (
+    app.showWindow(AppIcon, (
       <CodepadPreviewWindow
         code={code}
       />

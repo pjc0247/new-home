@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import { VerticalLayout } from 'atom/layout';
 import { Crossfade } from 'atom/display';
 import { NavPanel, WindowTitlebar } from 'component/window';
-import { WindowImpl } from 'state/impl';
+import { WindowImpl } from 'state/window';
+import { useApp } from 'state/app';
 import { CodeView } from 'app/codeview/CodeView';
 
 const AppIcon = require('asset/app/rookie/icon.png').default;
@@ -20,6 +21,7 @@ interface RookieProps {
 export const Rookie = ({
   ...props
 }: RookieProps) => {
+  const app = useApp();
   const [contentType, setContentType] = useState(ContentType.Index);
 
   return (
@@ -41,7 +43,7 @@ export const Rookie = ({
             icon: require('asset/icon/code.png').default,
             label: 'SourceCode',
             onClick: () => {
-              WindowImpl.show(
+              app.showWindow(
                 require('asset/icon/code.png').default,
                 <CodeView
                   language="cpp"

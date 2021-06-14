@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Desktop, Shortcut } from 'component/desktop';
-import { App } from 'state/impl';
+import { App } from 'state/app';
 import { BladeApp } from 'app/blade';
 import { GalleryApp } from 'app/gallery';
 import { GithubApp } from 'app/github';

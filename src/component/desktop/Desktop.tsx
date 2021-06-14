@@ -4,10 +4,10 @@ import { observer } from 'mobx-react';
 
 import { Window } from 'component/window';
 import { TaskBar } from 'component/taskbar';
+import { AppContextProvider } from 'state/app';
 import { useStores } from 'state';
 import { Wallpaper } from './Wallpaper';
 import { WallpaperGrid } from './WallpaperGrid';
-
 
 interface DesktopProps {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ interface DesktopProps {
 export const Desktop = observer(({
   children,
 }: DesktopProps) => {
-  const { windowStore } = useStores();
+  const { appStore, windowStore } = useStores();
 
   return (
     <Container>
@@ -28,11 +28,17 @@ export const Desktop = observer(({
       </WallpaperGrid>
 
       <WindowContainer>
-        {windowStore.windows.map(window => (
-          <Window
-            key={window.id}
-            window={window}
-          />
+        {appStore.apps.map(app => (
+          <AppContextProvider
+            app={app}
+          >
+            {app.windows.map(window => (
+              <Window
+                key={window.id}
+                window={window}
+              />
+            ))}
+          </AppContextProvider>
         ))}
       </WindowContainer>
     </Container>

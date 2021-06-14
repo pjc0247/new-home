@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Space } from 'atom/layout';
-import { WindowImpl } from 'state/impl';
+import { WindowImpl } from 'state/window';
+import { useApp } from 'state/app';
 import { Align } from 'utils';
 import { GalleryPreviewWindow, GalleryYoutubeWindow } from '../window';
 
@@ -14,17 +15,18 @@ interface GalleryThumbnailProps {
 export const GalleryThumbnail = ({
   src,
 }: GalleryThumbnailProps) => {
+  const app = useApp();
   const isYoutube = src?.includes('youtu');
   const youtubeId = src.match(/youtu(?:.*\/v\/|.*v\=|\.be\/)([A-Za-z0-9_\-]{11})/)?.[1];
 
   const onClick = () => {
     if (isYoutube) {
-      WindowImpl.show(
+      app.showWindow(
         AppIcon,
         (<GalleryYoutubeWindow youtubeId={youtubeId || ''} />)
       );
     } else {
-      WindowImpl.show(
+      app.showWindow(
         AppIcon,
         (<GalleryPreviewWindow src={src} />)
       );

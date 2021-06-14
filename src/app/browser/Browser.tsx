@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { VerticalLayout } from 'atom/layout';
-import { Window, NavPanel, WindowTitlebar } from 'component/window';
+import { NavPanel, WindowTitlebar } from 'component/window';
+import { useApp } from 'state/app';
 
 const AppIcon = require('asset/icon/browser.png').default;
 
@@ -11,6 +12,8 @@ interface BrowserProps {
 export const Browser = ({
   ...props
 }: BrowserProps) => {
+  const app = useApp();
+
   return (
     <>
       <NavPanel
@@ -23,7 +26,7 @@ export const Browser = ({
           title="Web Browser"
         />
         <IFrame
-          src="https://www.google.com"
+          src={app.params.url}
         />
       </Content>
     </>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { HorizontalLayout, Push } from 'atom/layout';
-import { WindowImpl } from 'state/impl';
+import { WindowImpl } from 'state/window';
 import { Align } from 'utils';
 
 interface WindowHeaderProps {

@@ -1,7 +1,8 @@
 import React from 'react';
 import { observable } from 'mobx';
 
-import { WindowImpl } from './impl';
+import { WindowImpl } from './window';
+import { App } from './app';
 
 export interface IWindow {
   id: string;
@@ -33,7 +34,7 @@ export interface IWindowStore {
 
   // mutators
   dispenseZIndex(): number;
-  addWindow(icon: string, Component: React.ReactNode, size?: ISize): string;
+  addWindow(app: App, icon: string, Component: React.ReactNode, size?: ISize): WindowImpl;
   removeWindow(id: string): void;
   bringToFront(id: string): void;
 };
@@ -50,8 +51,9 @@ const windowStore = observable<IWindowStore>({
   dispenseZIndex() {
     return this.zIndex++;
   },
-  addWindow(icon: string, Component: React.ReactNode, size?: ISize) {
+  addWindow(app: App, icon: string, Component: React.ReactNode, size?: ISize) {
     const newWindow = new WindowImpl(
+      app,
       icon,
       Component,
       size,
@@ -67,7 +69,7 @@ const windowStore = observable<IWindowStore>({
         };
       }
     }, 1000);
-    return newWindow.id;
+    return newWindow;
   },
   removeWindow(id: string) {
     const target = this.windows.find(x => x.id === id);
