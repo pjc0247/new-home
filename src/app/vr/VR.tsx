@@ -16,6 +16,7 @@ enum ContentType {
   MiniatureTDVideo = 'miniature_td_video',
   MiniatureTDWeb = 'miniature_td_web',
   Index2 = 'video2',
+  DizzySimulator = 'dizzy_video',
   Gallery = 'gallery',
 };
 
@@ -47,6 +48,11 @@ export const VR = ({
             onClick: () => setContentType(ContentType.Index2),
           },
           {
+            icon: require('asset/icon/youtube.png').default,
+            label: 'Dizzy Simulator',
+            onClick: () => setContentType(ContentType.DizzySimulator),
+          },
+          {
             icon: require('asset/icon/gallery.png').default,
             label: 'Retro Fighter VR',
             onClick: () => setContentType(ContentType.Gallery),
@@ -72,6 +78,11 @@ export const VR = ({
         {contentType === ContentType.Index2 && (
           <YoutubePlayer
             url="https://www.youtube.com/embed/L8NKB-dcxW4"
+          />
+        )}
+        {contentType === ContentType.DizzySimulator && (
+          <YoutubePlayer
+            url="https://www.youtube.com/embed/us9ClIw7xp4"
           />
         )}
         {contentType === ContentType.Gallery && (
