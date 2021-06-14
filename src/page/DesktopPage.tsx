@@ -12,6 +12,7 @@ import { CodepadApp } from 'app/codepad';
 import { LineFeed, Push } from 'atom/layout';
 import { LargeClock } from 'component/widget';
 import { BrowserApp } from 'app/browser/app';
+import { RaniaApp } from 'app/rania';
 
 export const DesktopPage = ({
 
@@ -46,6 +47,11 @@ export const DesktopPage = ({
         src={require('asset/app/blade/icon.png').default}
         name="Blade"
         onClick={() => App.launch(BladeApp)}
+      />
+      <Shortcut
+        src={require('asset/app/rania/icon.png').default}
+        name="RaniaSaga"
+        onClick={() => App.launch(RaniaApp)}
       />
       <LineFeed />
 
