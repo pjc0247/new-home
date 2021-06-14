@@ -25,7 +25,7 @@ const Container = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
 
-  gap: 12px;
+  gap: 6px;
   padding: 20px 20px;
 
   pointer-events: none;

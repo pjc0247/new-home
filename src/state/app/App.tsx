@@ -26,8 +26,8 @@ export class App {
 
     // spawn default window
     this.showWindow(app.icon, app.Component, {
-      width: app.width,
-      height: app.height,
+      width: params?.width || app.width,
+      height: params?.height || app.height,
     });
   }
 

@@ -11,6 +11,7 @@ import { BlankApp } from 'app/blank';
 import { CodepadApp } from 'app/codepad';
 import { LineFeed, Push } from 'atom/layout';
 import { LargeClock } from 'component/widget';
+import { BrowserApp } from 'app/browser/app';
 
 export const DesktopPage = ({
 
@@ -57,6 +58,21 @@ export const DesktopPage = ({
         src={require('asset/app/rookie/icon.png').default}
         name="Rookie"
         onClick={() => App.launch(RookieApp)}
+      />
+      <LineFeed />
+
+      <SectionLabel>
+        Miscellaneous
+      </SectionLabel>
+      <LineFeed />
+      <Shortcut
+        src={require('asset/icon/rgb.png').default}
+        name="ColorPicker"
+        onClick={() => App.launch(BrowserApp, {
+          url: 'https://pjc0247.github.io/index_old.html',
+          width: 1024,
+          height: 700,
+        })}
       />
       <LineFeed />
 

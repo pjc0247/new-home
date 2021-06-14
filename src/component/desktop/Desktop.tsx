@@ -50,28 +50,6 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-
-const ShortcutContainer = styled.div`
-  position: absolute;
-  left: 0px;
-  top: 0px;
-
-  display: flex;
-  width: 100%;
-
-  flex-wrap: wrap;
-  flex-direction: row;
-
-  gap: 12px;
-
-  pointer-events: none;
-
-  padding: 20px 20px;
-
-  > div {
-    pointer-events: all;
-  }
-`;
 const WindowContainer = styled.div`
   position: absolute;
   left: 0px;
