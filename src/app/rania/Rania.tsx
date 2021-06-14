@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Space, VerticalLayout } from 'atom/layout';
+import { VerticalLayout } from 'atom/layout';
+import { ScrollArea } from 'atom/display';
 import { YoutubePlayer } from 'atom/embed';
 import { NavPanel, WindowTitlebar } from 'component/window';
+import { GalleryGrid } from '../gallery/component';
+
+// @ts-ignore
+import * as rania from '../../asset/app/gallery/rania/*.png';
 
 const AppIcon = require('asset/app/rania/icon.png').default;
 
@@ -59,9 +64,11 @@ export const Rania = ({
           />
         )}
         {contentType === ContentType.Gallery && (
-          <YoutubePlayer
-            url="https://www.youtube.com/embed/wyei9DXiWTQ"
-          />
+          <ScrollArea>
+            <GalleryGrid
+              items={Object.values(rania as any)}
+            />
+          </ScrollArea>
         )}
       </Content>
     </>

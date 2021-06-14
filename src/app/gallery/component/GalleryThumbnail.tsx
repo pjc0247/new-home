@@ -28,7 +28,7 @@ export const GalleryThumbnail = ({
     } else {
       app.showWindow(
         AppIcon,
-        (<GalleryPreviewWindow src={src} />)
+        (<GalleryPreviewWindow src={src} />),
       );
     }
   };

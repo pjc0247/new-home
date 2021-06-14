@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { WindowTitlebar } from 'component/window';
 import { VerticalLayout } from 'atom/layout';
+import { useWindow, WindowTitlebar } from 'component/window';
 
 interface GalleryPreviewWindowProps {
   src: string;
@@ -11,6 +11,21 @@ export const GalleryPreviewWindow = ({
   src,
   ...props
 }: GalleryPreviewWindowProps) => {
+  const window = useWindow();
+  const imageRef = useRef<HTMLImageElement>();
+
+  useEffect(() => {
+    if (!imageRef.current)
+      return;
+
+    window.setTimeout(() => {
+      window.size = {
+        width: window.size.width,
+        height: imageRef.current!.offsetHeight + 36,
+      };
+    }, 100);
+  }, []);
+
   return (
     <Content>
       <WindowTitlebar
@@ -18,6 +33,7 @@ export const GalleryPreviewWindow = ({
         title="Preview"
       />
       <Image
+        ref={x => imageRef.current = x!}
         src={src}
       />
     </Content>
@@ -29,9 +45,6 @@ const Content = styled(VerticalLayout)`
 `;
 const Image = styled.img`
   width: 100%;
-  height: 100%;
-
-  object-fit: cover;
 
   overflow: hidden;
 `;
