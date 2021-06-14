@@ -61,17 +61,38 @@ export const DesktopPage = ({
       />
       <LineFeed />
 
-      <SectionLabel>
-        Compilers
-      </SectionLabel>
-      <LineFeed />
+      <div style={{ display: 'flex', width: '100%' }}>
+        <div>
+          <SectionLabel>
+            FE Development
+          </SectionLabel>
+          <LineFeed />
+          <Shortcut
+            src={require('asset/icon/rgb.png').default}
+            name="ColorPicker"
+            onClick={() => App.launch(BrowserApp, {
+              url: 'https://pjc0247.github.io/index_old.html',
+              width: 1024,
+              height: 700,
+            })}
+          />
+          <LineFeed />
+        </div>
+        <div style={{ width: '360px' }} />
+        <div>
+          <SectionLabel>
+            Compilers
+          </SectionLabel>
+          <LineFeed />
 
-      <Shortcut
-        src={require('asset/app/rookie/icon.png').default}
-        name="Rookie"
-        onClick={() => App.launch(RookieApp)}
-      />
-      <LineFeed />
+          <Shortcut
+            src={require('asset/app/rookie/icon.png').default}
+            name="Rookie"
+            onClick={() => App.launch(RookieApp)}
+          />
+          <LineFeed />
+        </div>
+      </div>
 
       <SectionLabel>
         Miscellaneous
