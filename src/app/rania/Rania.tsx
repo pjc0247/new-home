@@ -50,7 +50,6 @@ export const Rania = ({
 
       <Content>
         <WindowTitlebar
-          icon={require('asset/app/rania/icon.png').default}
           title="RaniaSaga"
         />
         {contentType === ContentType.Index && (

@@ -62,7 +62,6 @@ export const VR = ({
 
       <Content>
         <WindowTitlebar
-          icon={require('asset/icon/vr.png').default}
           title="VR Games"
         />
         {contentType === ContentType.MiniatureTDVideo && (
