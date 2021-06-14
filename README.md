@@ -44,6 +44,11 @@ const YourHandsomeApp = () => {
 Built-in Applications
 ----
 
+#### Github
+
+<img src="img/github1.png" width="320" />
+<img src="img/github2.png" width="320" />
+
 #### CodeView
 
 <img src="img/codeview.png" width="640" />
