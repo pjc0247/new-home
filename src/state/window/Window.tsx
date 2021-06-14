@@ -78,7 +78,7 @@ export class WindowImpl implements IWindow {
 
   dispose() {
     this.clearAllTimeouts();
-    // todo: next focused window
+    this.app.removeWindow(this);
   }
   clearAllTimeouts() {
     this.timers.forEach(tid => clearTimeout(tid));

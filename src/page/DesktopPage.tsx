@@ -13,6 +13,7 @@ import { LineFeed, Push } from 'atom/layout';
 import { LargeClock } from 'component/widget';
 import { BrowserApp } from 'app/browser/app';
 import { RaniaApp } from 'app/rania';
+import { VRApp } from 'app/vr';
 
 export const DesktopPage = ({
 
@@ -38,6 +39,11 @@ export const DesktopPage = ({
       </SectionLabel>
       <LineFeed />
 
+      <Shortcut
+        src={require('asset/icon/vr.png').default}
+        name="VR Works"
+        onClick={() => App.launch(VRApp)}
+      />
       <Shortcut
         src={require('asset/icon/gallery.png').default}
         name="Gallery"

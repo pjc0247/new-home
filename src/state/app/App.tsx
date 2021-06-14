@@ -21,7 +21,7 @@ export class App {
     makeAutoObservable(this);
 
     this.app = app;
-    this.params = params;
+    this.params = params; 
     this.windows = [];
 
     // spawn default window
@@ -41,5 +41,8 @@ export class App {
       size,
     );
     this.windows = [...this.windows, window];
+  }
+  removeWindow(window: WindowImpl) {
+    this.windows = this.windows.filter(x => x !== window);
   }
 };
