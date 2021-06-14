@@ -26,17 +26,17 @@ export const Rania = ({
         icon={AppIcon}
         items={[
           {
-            icon: require('asset/icon/github.png').default,
+            icon: require('asset/icon/youtube.png').default,
             label: 'Video - 1',
             onClick: () => setContentType(ContentType.Index),
           },
           {
-            icon: require('asset/icon/github.png').default,
+            icon: require('asset/icon/youtube.png').default,
             label: 'Video - 2',
             onClick: () => setContentType(ContentType.Index2),
           },
           {
-            icon: require('asset/icon/github.png').default,
+            icon: require('asset/icon/gallery.png').default,
             label: 'Gallery',
             onClick: () => setContentType(ContentType.Gallery),
           },
