@@ -46,8 +46,10 @@ Built-in Applications
 
 #### Github
 
+<div style="display:flex">
 <img src="img/github1.png" width="320" />
 <img src="img/github2.png" width="320" />
+</div>
 
 #### CodeView
 
