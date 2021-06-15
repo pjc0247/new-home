@@ -19,6 +19,9 @@ const GithubApp = {
 ```tsx
 const onClickGithub = () => {
   App.launch(GithubApp);
+  
+  // or you may pass launch parameters just like `argv`.
+  // App.launch(GithubApp, { url: 'https://www.github.com/pjc0247' });
 };
 ```
 
