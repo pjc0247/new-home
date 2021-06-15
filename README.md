@@ -51,7 +51,7 @@ Built-in Applications
 <img src="img/github2.png" width="320" />
 </div>
 
-(Using [github-e](https://github.com/trungdq88/github-explorer) project)
+(Using [github-e](https://github.com/trungdq88/github-explorer) project since official Github.com cannot be embedded by CORS policy.)
 
 #### CodeView
 
