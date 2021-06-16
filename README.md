@@ -19,6 +19,9 @@ const GithubApp = {
 ```tsx
 const onClickGithub = () => {
   App.launch(GithubApp);
+  
+  // or you may pass launch parameters just like `argv`.
+  // App.launch(GithubApp, { url: 'https://www.github.com/pjc0247' });
 };
 ```
 
@@ -46,8 +49,12 @@ Built-in Applications
 
 #### Github
 
+<div style="display:flex">
 <img src="img/github1.png" width="320" />
 <img src="img/github2.png" width="320" />
+</div>
+
+(Using [github-e](https://github.com/trungdq88/github-explorer) project since official Github.com cannot be embedded by CORS policy.)
 
 #### CodeView
 
