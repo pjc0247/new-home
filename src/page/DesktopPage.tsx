@@ -14,6 +14,7 @@ import { LargeClock } from 'component/widget';
 import { BrowserApp } from 'app/browser/app';
 import { RaniaApp } from 'app/rania';
 import { VRApp } from 'app/vr';
+import { SlowSharpApp } from 'app/slowsharp';
 
 export const DesktopPage = ({
 
@@ -64,6 +65,25 @@ export const DesktopPage = ({
       <div style={{ display: 'flex', width: '100%' }}>
         <div>
           <SectionLabel>
+            Compilers
+          </SectionLabel>
+          <LineFeed />
+
+          <Shortcut
+            src={require('asset/app/rookie/icon.png').default}
+            name="Rookie" 
+            onClick={() => App.launch(RookieApp)}
+          />
+          <Shortcut
+            src={require('asset/app/slowsharp/icon.png').default}
+            name="SlowSharp"
+            onClick={() => App.launch(SlowSharpApp)}
+          />
+          <LineFeed />
+        </div>
+        <div style={{ width: '360px' }} />
+        <div>
+          <SectionLabel>
             FE Development
           </SectionLabel>
           <LineFeed />
@@ -75,20 +95,6 @@ export const DesktopPage = ({
               width: 1024,
               height: 700,
             })}
-          />
-          <LineFeed />
-        </div>
-        <div style={{ width: '360px' }} />
-        <div>
-          <SectionLabel>
-            Compilers
-          </SectionLabel>
-          <LineFeed />
-
-          <Shortcut
-            src={require('asset/app/rookie/icon.png').default}
-            name="Rookie"
-            onClick={() => App.launch(RookieApp)}
           />
           <LineFeed />
         </div>
