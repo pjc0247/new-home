@@ -63,25 +63,21 @@ export const SlowSharp = ({
         <WindowTitlebar
           title="SlowSharp"
         />
-        <Crossfade
-          style={{ background: 'rgba(240, 240, 240, 0.8)' }}
-        >
-          {contentType === ContentType.Index && (
-            <IFrame
-              loading="lazy"
-              src="https://pjc0247.github.io/UniScript/uniplayground/"
-            />
-          )}
-          {contentType === ContentType.Github && (
-            <IFrame
-              loading="lazy"
-              src="https://github-e.com/#/user/pjc0247/repos/SlowSharp"
-            />
-          )}
-          {contentType === ContentType.Files && (
-            <div />
-          )}
-        </Crossfade>
+        {contentType === ContentType.Index && (
+          <IFrame
+            loading="lazy"
+            src="https://pjc0247.github.io/UniScript/uniplayground/"
+          />
+        )}
+        {contentType === ContentType.Github && (
+          <IFrame
+            loading="lazy"
+            src="https://github-e.com/#/user/pjc0247/repos/SlowSharp"
+          />
+        )}
+        {contentType === ContentType.Files && (
+          <div />
+        )}
       </Content>
     </>
   );
