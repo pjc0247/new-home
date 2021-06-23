@@ -25,7 +25,7 @@ const onClickGithub = () => {
 };
 ```
 
-[Blank Application](src/app/blank)
+[EXAMPLE: Blank Application](src/app/blank)
 
 
 Retrieving `window` object
