@@ -27,9 +27,22 @@ const onClickGithub = () => {
 
 [EXAMPLE: Blank Application](src/app/blank)
 
+Retrieving 'Application' object
+----
+An application is a unit of a program.
+```tsx
+const YourHandsomeApp = () => {
+  const app = useApplication();
+  
+  /* .... */
+};
+```
 
 Retrieving `window` object
 ----
+Applications may contain more than 1 windows.
+Each window has its own context.
+The example below shows how to get and control its own `window` instance.
 ```tsx
 const YourHandsomeApp = () => {
   const window = useWindow();
