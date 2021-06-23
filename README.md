@@ -58,6 +58,7 @@ const YourHandsomeApp = () => {
 
 Built-in Applications
 ----
+You can organize your portfolio with simple modifications to the pre-made applications. 
 
 #### Github
 
