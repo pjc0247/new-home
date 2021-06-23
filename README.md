@@ -29,7 +29,6 @@ const onClickGithub = () => {
 
 Retrieving `application` object
 ----
-An application is a unit of a program.
 ```tsx
 const YourHandsomeApp = () => {
   const app = useApplication();
