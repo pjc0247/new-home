@@ -27,7 +27,7 @@ const onClickGithub = () => {
 
 [EXAMPLE: Blank Application](src/app/blank)
 
-Retrieving 'Application' object
+Retrieving `application` object
 ----
 An application is a unit of a program.
 ```tsx
