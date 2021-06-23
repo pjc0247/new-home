@@ -73,6 +73,9 @@ You can organize your portfolio with simple modifications to the pre-made applic
 
 <img src="img/codeview.png" width="640" />
 
+* You can use it to show the code you wrote.
+* Contains tree explorer and monaco web editor.
+
 #### Gallery
 
 <img src="img/gallery.png" width="640" />
