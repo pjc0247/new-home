@@ -79,3 +79,6 @@ You can organize your portfolio with simple modifications to the pre-made applic
 #### Gallery
 
 <img src="img/gallery.png" width="640" />
+
+* Photo/Video gallery application.
+* Supports youtube video link.
