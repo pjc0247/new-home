@@ -56,7 +56,7 @@ const YourHandsomeApp = () => {
 };
 ```
 
-* (doc/window.md)[doc/window.md]
+* [doc/window.md](doc/window.md)
 
 Built-in Applications
 ----
