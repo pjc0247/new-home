@@ -1,0 +1,8 @@
+Window
+====
+
+* close()
+
+* maximize()
+
+* minimize()
