@@ -9,7 +9,7 @@ Window
 
 * setTimeout(fn: () => void, timeout: number)
 
-```
+```tsx
 const window = useWindow();
 
 window.setTimeout(() => {
