@@ -1,13 +1,13 @@
 Window
 ====
 
-* close()
+#### close()
 
-* maximize()
+#### maximize()
 
-* minimize()
+#### minimize()
 
-* setTimeout(fn: () => void, timeout: number)
+#### setTimeout(fn: () => void, timeout: number)
 
 ```tsx
 const window = useWindow();
