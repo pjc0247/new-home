@@ -46,6 +46,15 @@ export const DesktopPage = ({
         onClick={() => App.launch(VRApp)}
       />
       <Shortcut
+        src={require('asset/app/youtubewall/icon.png').default}
+        name="Youtube Wall"
+        onClick={() => App.launch(BrowserApp, {
+          url: 'https://pjc0247.github.io/youtube-wall/',
+          width: 1400,
+          height: 800,
+        })}
+      />
+      <Shortcut
         src={require('asset/icon/gallery.png').default}
         name="Gallery"
         onClick={() => App.launch(GalleryApp)}
