@@ -55,6 +55,15 @@ export const DesktopPage = ({
         })}
       />
       <Shortcut
+        src={require('asset/app/tower2d/icon.png').default}
+        name="異世界TD"
+        onClick={() => App.launch(BrowserApp, {
+          url: 'https://www.youtube.com/embed/jHLk9_mh6Ko',
+          width: 480,
+          height: 640,
+        })}
+      />
+      <Shortcut
         src={require('asset/icon/gallery.png').default}
         name="Gallery"
         onClick={() => App.launch(GalleryApp)}
