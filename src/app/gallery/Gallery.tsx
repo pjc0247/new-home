@@ -51,9 +51,10 @@ export const Gallery = ({
             <GalleryGrid
               items={[
                 'https://youtu.be/-B57_SwaNng',
-                require('asset/app/gallery/blade/1.png').default,
-                require('asset/app/gallery/blade/1.png').default,
-                require('asset/app/gallery/blade/1.png').default,
+                'https://youtu.be/dr4gEtYdtlM',
+                'https://youtu.be/03xgpYCe0K0',
+                'https://youtu.be/m1on7xVjy8w',
+                'https://youtu.be/nelWLFFcNIw',
                 require('asset/app/gallery/blade/1.png').default,
                 require('asset/app/gallery/blade/1.png').default,
                 require('asset/app/gallery/blade/1.png').default,
