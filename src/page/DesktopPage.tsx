@@ -58,7 +58,7 @@ export const DesktopPage = ({
         src={require('asset/app/tower2d/icon.png').default}
         name="異世界TD"
         onClick={() => App.launch(BrowserApp, {
-          url: 'https://www.youtube.com/embed/jHLk9_mh6Ko',
+          url: 'https://www.youtube.com/embed/LRqARzM57YY',
           width: 480,
           height: 640,
         })}
