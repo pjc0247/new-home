@@ -18,11 +18,7 @@ export const Codepad = ({
 }: CodepadProps) => {
   const app = useApp();
   const [code, setCode] = useState(DefaultSnippet);
-
-  useEffect(() => {
-    
-  }, []);
-
+  
   const onClickDeploy = () => {
     app.showWindow(AppIcon, (
       <CodepadPreviewWindow
