@@ -114,6 +114,15 @@ export const DesktopPage = ({
               height: 700,
             })}
           />
+          <Shortcut
+            src={require('asset/icon/manga.png').default}
+            name="Kakao Webtoon"
+            onClick={() => App.launch(BrowserApp, {
+              url: 'https://www.youtube.com/embed/2PAI27KBBAY',
+              width: 480,
+              height: 740,
+            })}
+          />
           <LineFeed />
         </div>
       </div>
