@@ -10,7 +10,7 @@ export const Crossfade = ({
   children,
   ...props
 }: CrossfadeProps) => {
-  const realWrapperRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const parent = document.createElement('div');
@@ -20,7 +20,7 @@ export const Crossfade = ({
       <>{children}</>
     ), parent, () => {
       child = parent.children[0] as any;
-      realWrapperRef.current?.append(child);
+      wrapperRef.current?.append(child);
 
       child.style.position = 'absolute';
       child.style.left = '0px';
@@ -57,10 +57,10 @@ export const Crossfade = ({
     <Container
       {...props}
     >
-      <RealWrapper
-        ref={realWrapperRef}
+      <Wrapper
+        ref={wrapperRef}
       >
-      </RealWrapper>
+      </Wrapper>
     </Container>
   );
 };
@@ -74,21 +74,7 @@ const Container = styled.div`
 
   overflow: hidden;
 `;
-const PrevWrapper = styled.div`
-  position: absolute;
-  left: 0px;
-  top: 0px;
-
-  opacity: 0.5;
-`;
 const Wrapper = styled.div`
-  position: absolute;
-  left: 0px;
-  top: 0px;
-
-  opacity: 0;
-`;
-const RealWrapper = styled.div`
 `;
 
 

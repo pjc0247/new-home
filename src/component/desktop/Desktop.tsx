@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react';
 
@@ -15,7 +15,7 @@ interface DesktopProps {
 export const Desktop = observer(({
   children,
 }: DesktopProps) => {
-  const { appStore, windowStore } = useStores();
+  const { appStore } = useStores();
 
   return (
     <Container>
