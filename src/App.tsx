@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 
 import { DesktopPage } from 'page/DesktopPage';
 import { isMobile } from 'utils';
+import { DeepLinkHandler } from './DeepLinkHandler';
 
 const App = () => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+      <DeepLinkHandler />
       <DesktopPage />
     </BrowserRouter>
   );

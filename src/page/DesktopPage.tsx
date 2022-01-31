@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useSearchParams } from 'react-router-dom';
 
 import { Desktop, Shortcut } from 'component/desktop';
 import { App } from 'state/app';
@@ -16,32 +15,10 @@ import { BrowserApp } from 'app/browser/app';
 import { RaniaApp } from 'app/rania';
 import { VRApp } from 'app/vr';
 import { SlowSharpApp } from 'app/slowsharp';
-import { IApp } from 'app/IApp';
 
 export const DesktopPage = ({
 
 }) => {
-  const [searchParams] = useSearchParams();
-  const app = searchParams.get('app');
-  const argv = searchParams.get('argv');
-
-  useEffect(() => {
-    if (app) {
-      let appToLaunch: IApp | undefined;
-      appToLaunch = {
-        'github': GithubApp,
-        'vr': VRApp,
-        'gallery': GalleryApp,
-        'blade': BladeApp,
-        'rania_saga': RaniaApp
-      }[app];
-
-      if (appToLaunch) {
-        App.launch(appToLaunch, JSON.parse(argv || '{}'));
-      }
-    }
-  }, [app, argv]);
-
   return(
     <Desktop>
       <SectionLabel>
