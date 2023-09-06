@@ -23,4 +23,4 @@ const HelloWorldText = styled.div\`
   margin: auto auto;
 \`;
 
-HelloWorldApp; // Dont't forget this`;
+HelloWorldApp; // Dont't remove this`;
