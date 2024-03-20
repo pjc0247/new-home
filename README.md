@@ -3,8 +3,6 @@ new-home-project
 
 An OS-like portfolio template for creepy developers.
 
-![badge](https://www.travis-ci.com/pjc0247/new-home.svg?branch=master&status=started)
-
 Creating an Application
 ----
 
