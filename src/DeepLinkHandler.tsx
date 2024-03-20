@@ -8,7 +8,7 @@ import { GalleryApp } from 'app/gallery';
 import { GithubApp } from 'app/github';
 import { RaniaApp } from 'app/rania';
 import { VRApp } from 'app/vr';
-import { BrowserApp } from 'app/browser';
+import { BrowserApp } from 'app/browser/app';
 
 export const DeepLinkHandler = () => {
   const [searchParams] = useSearchParams();
