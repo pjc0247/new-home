@@ -7,9 +7,6 @@ import { YoutubePlayer } from 'atom/embed';
 import { NavPanel, WindowTitlebar } from 'component/window';
 import { GalleryGrid } from '../gallery/component';
 
-// @ts-ignore
-import * as rania from '../../asset/app/gallery/rania/*.png';
-
 const AppIcon = require('asset/icon/vr.png').default;
 
 enum ContentType {
@@ -33,11 +30,6 @@ export const VR = ({
         icon={AppIcon}
         items={[
           {
-            icon: require('asset/icon/browser.png').default,
-            label: 'Miniature TD - Website',
-            onClick: () => setContentType(ContentType.MiniatureTDWeb),
-          },
-          {
             icon: require('asset/icon/youtube.png').default,
             label: 'Miniature TD',
             onClick: () => setContentType(ContentType.MiniatureTDVideo),
@@ -56,6 +48,11 @@ export const VR = ({
             icon: require('asset/icon/gallery.png').default,
             label: 'Retro Fighter VR',
             onClick: () => setContentType(ContentType.Gallery),
+          },
+          {
+            icon: require('asset/icon/browser.png').default,
+            label: 'Miniature TD - Website',
+            onClick: () => setContentType(ContentType.MiniatureTDWeb),
           },
         ]}
       />
