@@ -22,7 +22,7 @@ interface VRProps {
 export const VR = ({
   ...props
 }: VRProps) => {
-  const [contentType, setContentType] = useState(ContentType.MiniatureTDWeb);
+  const [contentType, setContentType] = useState(ContentType.MiniatureTDVideo);
 
   return (
     <>
